@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    My Wishlist — Apple iPhone 6s 64 GB Space Gray
+</title>
+
+
+<style>
+
+/* ==================================================
+   ОСНОВА
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background: #000;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* ==================================================
+   КНОПКА НАЗАД
+================================================== */
+
+.back-button {
+
+    position: fixed;
+
+    top: 30px;
+    left: 35px;
+
+    z-index: 100;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 22px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.04);
+
+    transition:
+        color .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        transform .2s ease,
+        box-shadow .3s ease;
+
+    animation:
+        backAppear .7s ease forwards;
+}
+
+
+.back-button:hover {
+
+    color: #ff2b2b;
+
+    border-color:
+        rgba(255,40,40,.7);
+
+    background:
+        rgba(255,0,0,.06);
+
+    box-shadow:
+        0 0 15px rgba(255,0,0,.15),
+        inset 0 0 12px rgba(255,0,0,.05);
+}
+
+
+.back-button:active {
+
+    transform:
+        translateX(-5px)
+        scale(.94);
+
+    color: #ff0000;
+
+    border-color: #ff0000;
+
+    box-shadow:
+        0 0 25px rgba(255,0,0,.45),
+        inset 0 0 15px rgba(255,0,0,.12);
+}
+
+
+@keyframes backAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-30px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* ==================================================
+   СТРАНИЦА
+================================================== */
+
+.product-page {
+
+    min-height: 100vh;
+
+    padding:
+        90px
+        50px
+        60px;
+}
+
+
+.product-container {
+
+    width: 100%;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.15fr
+        .85fr;
+
+    gap: 65px;
+
+    align-items: center;
+}
+
+
+/* ==================================================
+   ГАЛЕРЕЯ
+================================================== */
+
+.gallery {
+
+    height: 600px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    animation:
+        galleryAppear
+        .8s ease
+        forwards;
+}
+
+
+@keyframes galleryAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-35px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+.image-container {
+
+    width: 560px;
+
+    height: 560px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+.product-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    opacity: 1;
+
+    transform: scale(1);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+
+.product-image.changing {
+
+    opacity: .38;
+
+    transform: scale(.92);
+}
+
+
+/* ==================================================
+   ПРАВАЯ ЧАСТЬ
+================================================== */
+
+.product-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.brand {
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    color: #888;
+
+    margin-bottom: 15px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .18s
+        both;
+}
+
+
+.product-title {
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            58px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .28s
+        both;
+
+    transition:
+        opacity .22s ease,
+        transform .22s ease;
+}
+
+
+.product-title.title-changing {
+
+    opacity: 0;
+
+    transform:
+        translateY(8px);
+}
+
+
+.product-description {
+
+    max-width: 500px;
+
+    color: #999;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .39s
+        both;
+}
+
+
+/* ==================================================
+   ЦВЕТ
+================================================== */
+
+.color-title {
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: #888;
+
+    margin-bottom: 15px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .50s
+        both;
+}
+
+
+.color-options {
+
+    display: flex;
+
+    gap: 14px;
+
+    margin-bottom: 35px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .58s
+        both;
+}
+
+
+.color-button {
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        transparent;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.color-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -6px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        transparent;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.color-button:hover {
+
+    transform:
+        scale(1.16);
+}
+
+
+.color-button.active {
+
+    transform:
+        scale(1.15);
+
+    border-color:
+        #fff;
+}
+
+
+.color-button.active::after {
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.18);
+}
+
+
+.color-space-gray {
+
+    background:
+        linear-gradient(
+            135deg,
+            #686868,
+            #252525
+        );
+
+    border-color:
+        #777;
+}
+
+
+.color-silver {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #bdbdbd
+        );
+
+    border-color:
+        #d8d8d8;
+}
+
+
+/* ==================================================
+   ЦЕНА
+================================================== */
+
+.product-price {
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    margin-bottom: 30px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .68s
+        both;
+
+    transition:
+        opacity .22s ease,
+        transform .22s ease;
+}
+
+
+.product-price.price-changing {
+
+    opacity: .72;
+
+    transform:
+        translateY(0);
+
+    transition:
+        opacity .16s ease;
+}
+
+
+/* ==================================================
+   КНОПКИ
+================================================== */
+
+.product-buttons {
+
+    display: flex;
+
+    gap: 14px;
+
+    animation:
+        infoItemAppear
+        .65s ease
+        .80s
+        both;
+}
+
+
+.reserve-button,
+.website-button {
+
+    padding:
+        15px
+        25px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        color .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.reserve-button {
+
+    border:
+        1px solid #fff;
+
+    background:
+        #fff;
+
+    color:
+        #000;
+}
+
+
+.reserve-button:hover {
+
+    background:
+        #ff2020;
+
+    border-color:
+        #ff2020;
+
+    color:
+        #fff;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,0,0,.35);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.reserve-button:active {
+
+    transform:
+        scale(.91);
+
+    background:
+        #d60000;
+
+    border-color:
+        #d60000;
+
+    color:
+        #fff;
+
+    box-shadow:
+        0 0 35px
+        rgba(255,0,0,.65),
+
+        0 0 60px
+        rgba(255,0,0,.25),
+
+        inset 0 0 15px
+        rgba(255,255,255,.15);
+}
+
+
+.website-button {
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    background:
+        transparent;
+
+    color:
+        #fff;
+}
+
+
+.website-button:hover {
+
+    border-color:
+        rgba(255,0,0,.7);
+
+    color:
+        #ff2020;
+
+    box-shadow:
+        0 0 18px
+        rgba(255,0,0,.15);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.website-button:active {
+
+    transform:
+        scale(.94);
+
+    color:
+        #ff0000;
+
+    border-color:
+        #ff0000;
+
+    box-shadow:
+        0 0 28px
+        rgba(255,0,0,.45);
+}
+
+
+/* ==================================================
+   СООБЩЕНИЕ БРОНИРОВАНИЯ
+================================================== */
+
+.reserve-message {
+
+    margin-top: 18px;
+
+    color:
+        #ff3030;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    transform:
+        translateY(8px);
+
+    pointer-events: none;
+}
+
+
+.reserve-message.show {
+
+    animation:
+        reserveMessage
+        .55s ease
+        forwards;
+}
+
+
+@keyframes reserveMessage {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+    }
+
+    40% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==================================================
+   ОБЩАЯ АНИМАЦИЯ
+================================================== */
+
+@keyframes infoItemAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(22px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==================================================
+   АДАПТИВ
+================================================== */
+
+@media (max-width: 900px) {
+
+    .product-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 30px;
+    }
+
+
+    .gallery {
+
+        height: 500px;
+    }
+
+
+    .image-container {
+
+        width: 470px;
+
+        height: 470px;
+    }
+
+
+    .product-info {
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+
+    .product-description {
+
+        max-width: 600px;
+    }
+
+
+    .color-options {
+
+        justify-content: center;
+    }
+
+
+    .product-buttons {
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .product-page {
+
+        padding:
+            100px
+            20px
+            45px;
+    }
+
+
+    .back-button {
+
+        top: 20px;
+
+        left: 20px;
+
+        padding:
+            10px
+            17px;
+
+        font-size: 11px;
+    }
+
+
+    .gallery {
+
+        height: 390px;
+    }
+
+
+    .image-container {
+
+        width: 340px;
+
+        height: 340px;
+    }
+
+
+    .product-title {
+
+        font-size: 35px;
+    }
+
+
+    .product-description {
+
+        font-size: 14px;
+    }
+
+
+    .product-price {
+
+        font-size: 28px;
+    }
+
+
+    .product-buttons {
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .reserve-button,
+    .website-button {
+
+        width:
+            min(
+                100%,
+                300px
+            );
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     НАЗАД
+================================================== -->
+
+<a
+    href="products.html"
+    class="back-button"
+>
+    ← НАЗАД
+</a>
+
+
+<main class="product-page">
+
+
+    <div class="product-container">
+
+
+        <!-- ==================================================
+             ГАЛЕРЕЯ
+        ================================================== -->
+
+        <div class="gallery">
+<div class="image-container">
+
+                <img
+                    id="productImage"
+                    class="product-image"
+                    src="images/iphone6s.png"
+                    alt="Apple iPhone 6s 64 GB Space Gray"
+                >
+
+            </div>
+</div>
+
+
+        <!-- ==================================================
+             ИНФОРМАЦИЯ
+        ================================================== -->
+
+        <div class="product-info">
+
+
+            <div class="brand">
+                APPLE
+            </div>
+
+
+            <h1
+                class="product-title"
+                id="productTitle"
+            >
+                iPhone 6s
+                64 GB Space Gray
+            </h1>
+
+
+            <p class="product-description">
+
+                Apple iPhone 6s с памятью 64 ГБ
+                в цвете Space Gray.
+                Компактный смартфон с классическим
+                дизайном Apple.
+
+            </p>
+
+
+            <div class="color-title">
+                ЦВЕТ
+            </div>
+
+
+            <div class="color-options">
+
+                <button
+                    class="
+                        color-button
+                        color-space-gray
+                        active
+                    "
+                    data-color="space-gray"
+                    aria-label="Space Gray"
+                    type="button"
+                >
+                </button>
+
+                <button
+                    class="
+                        color-button
+                        color-silver
+                    "
+                    data-color="silver"
+                    aria-label="Silver"
+                    type="button"
+                >
+                </button>
+
+            </div>
+
+
+            <div
+                class="product-price"
+                id="productPrice"
+            >
+                3 799 ₴
+            </div>
+
+
+            <div class="product-buttons">
+
+
+                <button
+                    class="reserve-button"
+                    id="reserveButton"
+                    type="button"
+                >
+                    ЗАБРОНИРОВАТЬ
+                </button>
+
+
+                <button
+                    class="website-button"
+                    id="websiteButton"
+                    type="button"
+                >
+                    ПОСМОТРЕТЬ НА САЙТЕ
+                </button>
+
+
+            </div>
+
+
+            <div
+                class="reserve-message"
+                id="reserveMessage"
+            >
+                Товар добавлен в список бронирования
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+<script>
+
+
+/* ==================================================
+   ПЕРЕХОД НА ПЕРВУЮ СТРАНИЦУ ПРИ ОБНОВЛЕНИИ
+================================================== */
+
+const navigationEntry =
+    performance.getEntriesByType(
+        "navigation"
+    )[0];
+
+
+if (
+    navigationEntry &&
+    navigationEntry.type === "reload"
+) {
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
+
+
+/* ==================================================
+   ДАННЫЕ ТОВАРА
+================================================== */
+
+const colors = {
+
+    "space-gray": {
+
+        title:
+            "iPhone 6s 64 GB Space Gray",
+
+        price:
+            "3 799 ₴",
+
+        website:
+            "https://synthetic.ua/ru/product/smartfon-apple-iphone-6s-64-gb-space-gray/P02411EC/CS9KT7YUK?utm_source=google&utm_medium=cpc&campaign_id=23830518853&adgroup_id=198766334600&ad_id=808016397028&utm_term=&gad_source=1&gad_campaignid=23830518853&gbraid=0AAAAACzPbZ83PW3JKJpKcuysYHnCsucGn&gclid=Cj0KCQjwt9jVBhDXARIsAFSP-6cvAXHVmkEam9jWa6ASKC07KlCL-jJatU4u9VAKKdNgMK3tL_PUHeAaApcYEALw_wcB",
+
+        images: [
+
+            "images/iphone6s.png"
+
+        ]
+
+    },
+
+    "silver": {
+
+        title:
+            "iPhone 6s 64 GB Silver",
+
+        price:
+            "3 799 ₴",
+
+        website:
+            "https://synthetic.ua/ru/product/smartfon-apple-iphone-6s-64-gb-silver/P04056FO/CS4AN6FHQ?utm_source=google&utm_medium=cpc&campaign_id=23830518853&adgroup_id=198766334600&ad_id=808016397028&utm_term=&gad_source=1&gad_campaignid=23830518853&gbraid=0AAAAACzPbZ83PW3JKJpKcuysYHnCsucGn&gclid=Cj0KCQjwt9jVBhDXARIsAFSP-6cmbV6ZRqx7Dk_OaQvG-ueaHkZZMs4K2_EP7AHR3hgpFNCoOIfKmFMaAr3HEALw_wcB",
+
+        images: [
+
+            "images/iphone6s-silver.png"
+
+        ]
+
+    }
+
+};
+
+
+/* ==================================================
+   ЭЛЕМЕНТЫ
+================================================== */
+
+const productImage =
+    document.getElementById(
+        "productImage"
+    );
+
+
+const productTitle =
+    document.getElementById(
+        "productTitle"
+    );
+
+
+const productPrice =
+    document.getElementById(
+        "productPrice"
+    );
+
+
+const websiteButton =
+    document.getElementById(
+        "websiteButton"
+    );
+
+
+const reserveButton =
+    document.getElementById(
+        "reserveButton"
+    );
+
+
+const reserveMessage =
+    document.getElementById(
+        "reserveMessage"
+    );
+
+
+const colorButtons =
+    document.querySelectorAll(
+        ".color-button"
+    );
+/* ==================================================
+   ПЕРЕМЕННЫЕ
+================================================== */
+
+let currentColor =
+    "space-gray";
+
+
+let currentImage =
+    0;
+
+
+let colorChanging =
+    false;
+
+
+/* ==================================================
+   ПРЕДЗАГРУЗКА ФОТО
+================================================== */
+
+Object.values(colors).forEach(
+    color => {
+
+        color.images.forEach(
+            src => {
+
+                const img =
+                    new Image();
+
+                img.src = src;
+
+            }
+        );
+
+    }
+);
+
+
+/* ==================================================
+   СМЕНА ФОТО
+================================================== */
+
+function changeImage(index) {
+
+    if (colorChanging) {
+        return;
+    }
+
+
+    const images =
+        colors[
+            currentColor
+        ].images;
+
+
+    if (!images.length) {
+        return;
+    }
+
+
+    currentImage =
+        (
+            index +
+            images.length
+        )
+        %
+        images.length;
+
+
+    productImage.classList.add(
+        "changing"
+    );
+
+
+    setTimeout(() => {
+
+        productImage.src =
+            images[
+                currentImage
+            ];
+
+
+        productImage.onload =
+            () => {
+
+                requestAnimationFrame(
+                    () => {
+
+                        productImage.classList.remove(
+                            "changing"
+                        );
+
+                    }
+                );
+
+            };
+
+
+        setTimeout(() => {
+
+            productImage.classList.remove(
+                "changing"
+            );
+
+        }, 250);
+
+    }, 180);
+
+}
+
+
+/* ==================================================
+   СМЕНА ЦВЕТА
+================================================== */
+
+colorButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const selectedColor =
+                    button.dataset.color;
+
+
+                if (
+                    selectedColor ===
+                        currentColor
+                    ||
+                    colorChanging
+                ) {
+
+                    return;
+
+                }
+
+
+                colorChanging =
+                    true;
+
+
+                colorButtons.forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                productTitle.classList.add(
+                    "title-changing"
+                );
+
+
+                productPrice.classList.add(
+                    "price-changing"
+                );
+
+
+                productImage.classList.add(
+                    "changing"
+                );
+
+
+                setTimeout(() => {
+
+                    currentColor =
+                        selectedColor;
+
+
+                    currentImage =
+                        0;
+
+
+                    const data =
+                        colors[
+                            currentColor
+                        ];
+
+
+                    productTitle.textContent =
+                        data.title;
+
+
+                    productPrice.textContent =
+                        data.price;
+
+
+                    productImage.src =
+                        data.images[0];
+
+
+                    productImage.onload =
+                        () => {
+
+                            requestAnimationFrame(
+                                () => {
+
+                                    productImage.classList.remove(
+                                        "changing"
+                                    );
+
+                                }
+                            );
+
+                        };
+
+
+                    setTimeout(() => {
+
+                        productTitle.classList.remove(
+                            "title-changing"
+                        );
+
+
+                        requestAnimationFrame(
+                            () => {
+
+                                productPrice.classList.remove(
+                                    "price-changing"
+                                );
+
+                            }
+                        );
+
+                    }, 40);
+
+
+                }, 220);
+
+
+                setTimeout(() => {
+
+                    colorChanging =
+                        false;
+
+                }, 500);
+
+            }
+        );
+
+    }
+);
+
+
+/* ==================================================
+   ПОСМОТРЕТЬ НА САЙТЕ
+================================================== */
+
+websiteButton.addEventListener(
+    "click",
+    () => {
+
+        const website =
+            colors[
+                currentColor
+            ].website;
+
+
+        window.open(
+            website,
+            "_blank"
+        );
+
+    }
+);
+
+
+/* ==================================================
+   ЗАБРОНИРОВАТЬ
+================================================== */
+
+reserveButton.addEventListener(
+    "click",
+    () => {
+
+
+        reserveButton.classList.remove(
+            "reserve-click"
+        );
+
+
+        void reserveButton.offsetWidth;
+
+
+        reserveButton.classList.add(
+            "reserve-click"
+        );
+
+
+        reserveMessage.classList.remove(
+            "show"
+        );
+
+
+        void reserveMessage.offsetWidth;
+
+
+        reserveMessage.classList.add(
+            "show"
+        );
+
+
+        setTimeout(() => {
+
+            reserveMessage.classList.remove(
+                "show"
+            );
+
+        }, 2500);
+
+    }
+);
+
+
+/* ==================================================
+   АНИМАЦИЯ КНОПКИ БРОНИРОВАНИЯ
+================================================== */
+
+const reserveAnimationStyle =
+    document.createElement(
+        "style"
+    );
+
+
+reserveAnimationStyle.textContent = `
+
+.reserve-button.reserve-click {
+
+    animation:
+        reserveClickAnimation
+        .5s ease;
+}
+
+
+@keyframes reserveClickAnimation {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        box-shadow:
+            0 0 0
+            rgba(255,0,0,0);
+    }
+
+
+    25% {
+
+        transform:
+            scale(.88);
+
+        background:
+            #ff0000;
+
+        border-color:
+            #ff0000;
+
+        color:
+            #fff;
+
+        box-shadow:
+            0 0 20px
+            rgba(255,0,0,.45);
+    }
+
+
+    55% {
+
+        transform:
+            scale(1.06);
+
+        background:
+            #ff1717;
+
+        border-color:
+            #ff1717;
+
+        color:
+            #fff;
+
+        box-shadow:
+            0 0 40px
+            rgba(255,0,0,.65),
+
+            0 0 70px
+            rgba(255,0,0,.25);
+    }
+
+
+    100% {
+
+        transform:
+            scale(1);
+
+        background:
+            #ff2020;
+
+        border-color:
+            #ff2020;
+
+        color:
+            #fff;
+
+        box-shadow:
+            0 0 25px
+            rgba(255,0,0,.35);
+    }
+
+}
+
+`;
+
+
+document.head.appendChild(
+    reserveAnimationStyle
+);
+
+
+/* ==================================================
+   НАЗАД
+================================================== */
+
+const backButton =
+    document.querySelector(
+        ".back-button"
+    );
+
+
+backButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+
+        this.classList.remove(
+            "back-click"
+        );
+
+
+        void this.offsetWidth;
+
+
+        this.classList.add(
+            "back-click"
+        );
+
+
+        setTimeout(() => {
+
+            window.location.href =
+                "products.html";
+
+        }, 220);
+
+    }
+);
+
+
+/* ==================================================
+   АНИМАЦИЯ НАЗАД
+================================================== */
+
+const backAnimationStyle =
+    document.createElement(
+        "style"
+    );
+
+
+backAnimationStyle.textContent = `
+
+.back-button.back-click {
+
+    animation:
+        backClickAnimation
+        .32s ease;
+}
+
+
+@keyframes backClickAnimation {
+
+    0% {
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+
+    35% {
+
+        transform:
+            translateX(-7px)
+            scale(.92);
+    }
+
+
+    70% {
+
+        transform:
+            translateX(3px)
+            scale(1.03);
+    }
+
+
+    100% {
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+}
+
+`;
+
+
+document.head.appendChild(
+    backAnimationStyle
+);
+
+
+</script>
+
+</body>
+
+</html>

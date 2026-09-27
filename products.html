@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Wishlist</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    transition: opacity .65s ease-in-out;
+}
+
+/* LOGO */
+
+.logo-link {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+    width: 155px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border: 1px solid #202020;
+    border-radius: 6px;
+    text-decoration: none;
+    z-index: 100;
+    opacity: 0;
+    transform: translateX(-18px);
+    animation: logoAppear 1s ease .15s forwards;
+    transition: transform .45s ease, border-color .45s ease,
+                box-shadow .6s ease, background .45s ease;
+}
+
+@keyframes logoAppear {
+    from { opacity: 0; transform: translateX(-18px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.logo-link::before {
+    content: "";
+    position: absolute;
+    inset: -16px;
+    border-radius: 14px;
+    background: radial-gradient(ellipse, rgba(255,255,255,.07), transparent 68%);
+    opacity: .25;
+    pointer-events: none;
+    z-index: -1;
+    animation: logoAmbient 5s ease-in-out infinite;
+}
+
+@keyframes logoAmbient {
+    0%, 100% { opacity: .18; transform: scale(.98); }
+    50% { opacity: .5; transform: scale(1.03); }
+}
+
+.logo {
+    width: 140px;
+    height: 90px;
+    object-fit: contain;
+    display: block;
+    filter: invert(1);
+    transition: transform .45s ease, filter .5s ease;
+}
+
+.logo-link:hover {
+    transform: translateY(-3px) scale(1.035);
+    border-color: #555;
+    background: #020202;
+    box-shadow: 0 0 18px rgba(255,255,255,.08),
+                0 0 35px rgba(255,40,40,.08),
+                0 0 60px rgba(255,40,40,.035);
+}
+
+.logo-link:hover .logo {
+    transform: scale(1.035);
+    filter: invert(1) drop-shadow(0 0 7px rgba(255,255,255,.3))
+            drop-shadow(0 0 12px rgba(255,50,50,.12));
+}
+
+.logo-link.clicked {
+    border-color: #b74b4b;
+    background: rgba(120,25,25,.08);
+    transform: scale(.96);
+    box-shadow: 0 0 20px rgba(255,60,60,.22),
+                0 0 45px rgba(255,40,40,.12);
+}
+
+/* CATALOG BUTTON */
+
+.catalog-button {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0;
+    background: #000;
+    border: 1px solid #202020;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 200;
+    opacity: 0;
+    transform: translateX(18px);
+    animation: catalogButtonAppear .65s ease .35s forwards;
+    transition: transform .35s ease, border-color .35s ease,
+                background .35s ease, box-shadow .45s ease;
+}
+
+@keyframes catalogButtonAppear {
+    from { opacity: 0; transform: translateX(18px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.catalog-line {
+    width: 25px;
+    height: 2px;
+    display: block;
+    background: #d0d0d0;
+    border-radius: 2px;
+    transition: background .3s ease, transform .35s ease,
+                opacity .25s ease, width .35s ease;
+}
+
+.catalog-button:hover {
+    border-color: #8f3838;
+    background: #020202;
+    box-shadow: 0 0 18px rgba(255,40,40,.10),
+                0 0 35px rgba(255,40,40,.045);
+    transform: translateY(-2px);
+}
+
+.catalog-button:hover .catalog-line,
+.catalog-button.active .catalog-line {
+    background: #ff3d3d;
+}
+
+.catalog-button.active .catalog-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.catalog-button.active .catalog-line:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+.catalog-button.active .catalog-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* PAGE */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 70px 50px 100px;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: pageAppear 1s ease .05s forwards;
+}
+
+@keyframes pageAppear {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.page-title {
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 700;
+    letter-spacing: -3px;
+    line-height: 1;
+    color: #fff;
+    animation: pageTitleFlow 6s ease-in-out 1.5s infinite;
+}
+
+@keyframes pageTitleFlow {
+    0%, 20%, 80%, 100% { color: #fff; }
+    50% { color: #c98282; }
+}
+
+.page-subtitle {
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: #d0d0d0;
+    opacity: .75;
+    animation: subtitleBlink 4.5s ease-in-out 1.5s infinite;
+}
+
+@keyframes subtitleBlink {
+    0%, 25%, 75%, 100% { opacity: .75; }
+    50% { opacity: .25; }
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 45px;
+}
+
+.category {
+    padding: 10px 18px;
+    border: 1px solid #292929;
+    border-radius: 999px;
+    background: rgba(255,255,255,.025);
+    color: #bdbdbd;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color .3s ease, border-color .3s ease,
+                background .3s ease, box-shadow .35s ease,
+                transform .3s ease;
+}
+
+.category:hover {
+    color: #fff;
+    border-color: #555;
+    background: rgba(255,255,255,.05);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255,255,255,.04);
+}
+
+.category.active {
+    color: #fff;
+    border-color: #8f3838;
+    background: rgba(150,40,40,.12);
+    box-shadow: 0 0 15px rgba(255,40,40,.08);
+}
+
+/* PRODUCT GRID */
+
+.products {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.product-card {
+    position: relative;
+    min-height: 410px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: #080808;
+    border: 1px solid #1d1d1d;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(25px) scale(.985);
+    animation: cardAppear .8s cubic-bezier(.2,.75,.25,1) .25s forwards;
+    transition: transform .45s ease, border-color .4s ease,
+                box-shadow .5s ease, background .4s ease;
+    cursor: pointer;
+}
+
+@keyframes cardAppear {
+    from { opacity: 0; transform: translateY(25px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.product-card:hover {
+    transform: translateY(-7px) scale(1.008);
+    border-color: #353535;
+    background: #0b0b0b;
+    box-shadow: 0 0 20px rgba(255,255,255,.035),
+                0 0 35px rgba(255,30,30,.055);
+}
+
+.product-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -100px;
+    right: -80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,40,40,.10), transparent 70%);
+    opacity: 0;
+    transition: opacity .5s ease, transform .7s ease;
+    pointer-events: none;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #101010 0%, #060606 60%, #030303 100%);
+    border: 1px solid #161616;
+    border-radius: 7px;
+    color: #555;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border-color .4s ease, box-shadow .5s ease, transform .5s ease;
+}
+
+.product-card:hover .product-image {
+    border-color: #303030;
+    box-shadow: inset 0 0 25px rgba(255,40,40,.035);
+    transform: scale(1.01);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.04);
+}
+
+.product-name {
+    font-size: 19px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 9px;
+    transition: color .35s ease, transform .35s ease;
+}
+
+.product-card:hover .product-name {
+    transform: translateX(2px);
+}
+
+.product-description {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.product-bottom {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* VIEW BUTTON */
+
+.view-button {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 18px;
+    border: 1px solid #303030;
+    border-radius: 999px;
+    background: transparent;
+    color: #cfcfcf;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: color .3s ease, border-color .3s ease,
+                background .3s ease, box-shadow .35s ease,
+                transform .3s ease;
+}
+
+.view-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+    transform: skewX(-20deg);
+    transition: left .55s ease;
+}
+
+.view-button:hover::before {
+    left: 140%;
+}
+
+.view-button:hover {
+    color: #fff;
+    border-color: #a83a3a;
+    background: rgba(160,40,40,.10);
+    box-shadow: 0 0 15px rgba(255,40,40,.10),
+                0 0 28px rgba(255,40,40,.035);
+    transform: translateY(-2px);
+}
+
+.view-button:active {
+    transform: translateY(0) scale(.95);
+}
+
+/* BACK TO TOP */
+
+.scroll-top {
+    position: fixed;
+    right: 35px;
+    bottom: 30px;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #292929;
+    border-radius: 50%;
+    background: rgba(0,0,0,.92);
+    color: #d0d0d0;
+    cursor: pointer;
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity .35s ease, visibility .35s ease,
+                transform .35s ease, border-color .35s ease,
+                box-shadow .45s ease, color .35s ease;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    color: #fff;
+    border-color: #a83a3a;
+    box-shadow: 0 0 14px rgba(255,40,40,.18),
+                0 0 28px rgba(255,40,40,.10);
+}
+
+.scroll-top-arrow {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-top: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform .35s ease, filter .35s ease;
+}
+
+.scroll-top-arrow::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 21px;
+    left: 7px;
+    top: -4px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    transform-origin: center;
+}
+
+.scroll-top:hover .scroll-top-arrow {
+    transform: rotate(45deg) translate(-2px,-2px);
+    filter: drop-shadow(0 0 4px rgba(255,255,255,.45))
+            drop-shadow(0 0 8px rgba(255,40,40,.45));
+}
+
+/* CATALOG PANEL */
+
+.catalog-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(430px, 100vw);
+    height: 100vh;
+    background: rgba(0,0,0,.97);
+    border-left: 1px solid #242424;
+    box-shadow: -18px 0 45px rgba(0,0,0,.55),
+                -5px 0 22px rgba(255,35,35,.035);
+    z-index: 90;
+    transform: translateX(105%);
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    transition: transform .45s ease, opacity .35s ease, visibility .45s ease;
+}
+
+.catalog-panel.open {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.catalog-filters {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 28px 28px 20px;
+    background: rgba(8,8,8,.98);
+    border-bottom: 1px solid #202020;
+}
+
+.catalog-search {
+    width: calc(100% - 82px);
+    height: 52px;
+    padding: 0 17px;
+    border: 1px solid #292929;
+    border-radius: 7px;
+    outline: none;
+    background: #050505;
+    color: #fff;
+    font: 500 14px Arial, Helvetica, sans-serif;
+    transition: border-color .3s ease, box-shadow .4s ease;
+}
+
+.catalog-search::placeholder {
+    color: #777;
+}
+
+.catalog-search:hover,
+.catalog-search:focus {
+    border-color: #a83a3a;
+    box-shadow: 0 0 14px rgba(255,40,40,.12);
+}
+
+.catalog-price {
+    margin-top: 20px;
+}
+
+.catalog-price-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 11px;
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.catalog-price-input {
+    width: 110px;
+    height: 32px;
+    padding: 0 9px;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    outline: none;
+    background: #050505;
+    color: #ddd;
+    text-align: right;
+    appearance: textfield;
+}
+
+.catalog-price-input:focus {
+    border-color: #a83a3a;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(255,40,40,.10);
+}
+
+.catalog-price-input::-webkit-outer-spin-button,
+.catalog-price-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.catalog-price-slider {
+    width: 100%;
+    height: 3px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: #292929;
+    outline: none;
+    cursor: pointer;
+}
+
+.catalog-price-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ddd;
+    border: 1px solid #555;
+    cursor: pointer;
+}
+
+.catalog-price-slider::-webkit-slider-thumb:hover {
+    background: #fff;
+    box-shadow: 0 0 8px rgba(255,255,255,.35),
+                0 0 16px rgba(170,30,30,.5);
+}
+
+.catalog-price-slider::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ddd;
+    border: 1px solid #555;
+    cursor: pointer;
+}
+
+.catalog-list {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    padding: 12px 28px 30px;
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a #050505;
+}
+
+.catalog-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.catalog-list::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+.catalog-list::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+.catalog-list::-webkit-scrollbar-thumb:hover {
+    background: #8f3838;
+}
+
+.catalog-category {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px;
+    margin-bottom: 8px;
+    background: #030303;
+    border: 1px solid #202020;
+    border-radius: 7px;
+    color: #cfcfcf;
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color .3s ease, background .3s ease,
+                border-color .3s ease, padding-left .3s ease,
+                box-shadow .35s ease, transform .3s ease;
+}
+
+.catalog-category::after {
+    content: "→";
+    color: #555;
+    font-size: 18px;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.catalog-category:hover {
+    color: #fff;
+    background: #101010;
+    border-color: #8f3838;
+    padding-left: 24px;
+    box-shadow: 0 0 15px rgba(255,40,40,.08),
+                0 0 28px rgba(255,40,40,.035);
+}
+
+.catalog-category:hover::after {
+    color: #b22;
+    transform: translateX(4px);
+}
+
+.catalog-category:active {
+    transform: scale(.985);
+    background: rgba(150,40,40,.10);
+    border-color: #a83a3a;
+}
+
+.catalog-empty {
+    padding: 28px 5px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+}
+
+/* SOCIAL LINKS */
+
+.catalog-social {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 35;
+    padding: 16px 28px 24px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0),
+                rgba(0,0,0,.96) 30%, #050505 100%);
+    pointer-events: none;
+}
+
+.catalog-social-label {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #666;
+}
+
+.catalog-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.catalog-social-link {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #303030;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #aaa;
+    background: rgba(8,8,8,.94);
+    pointer-events: auto;
+    transition: transform .4s ease, color .4s ease,
+                border-color .4s ease, box-shadow .4s ease;
+    animation: socialFloat 4s ease-in-out infinite;
+}
+
+.catalog-social-link:nth-child(2) {
+    animation-delay: .7s;
+}
+
+.catalog-social-link:hover {
+    color: #fff;
+    border-color: rgba(255,55,55,.85);
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 0 12px rgba(255,35,35,.22),
+                0 0 30px rgba(255,35,35,.12);
+}
+
+.catalog-social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: filter .4s ease;
+}
+
+.catalog-social-link:hover svg {
+    filter: drop-shadow(0 0 5px rgba(255,45,45,.7));
+}
+
+@keyframes socialFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .catalog-button {
+        top: 18px;
+        right: 18px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .catalog-line {
+        width: 22px;
+    }
+
+    .logo-link {
+        top: 18px;
+        left: 18px;
+        width: 125px;
+        height: 80px;
+    }
+
+    .logo {
+        width: 112px;
+        height: 70px;
+    }
+
+    .page {
+        padding: 130px 18px 70px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .page-title {
+        font-size: clamp(42px, 12vw, 65px);
+        letter-spacing: -2px;
+    }
+
+    .page-subtitle {
+        font-size: 10px;
+        letter-spacing: 5px;
+    }
+
+    .categories {
+        gap: 7px;
+        margin-bottom: 30px;
+    }
+
+    .category {
+        padding: 9px 14px;
+        font-size: 11px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .product-card {
+        min-height: 390px;
+        padding: 16px;
+    }
+
+    .product-image {
+        height: 205px;
+    }
+
+    .product-name {
+        font-size: 18px;
+    }
+
+    .product-description {
+        font-size: 12px;
+    }
+
+    .view-button {
+        padding: 9px 15px;
+        font-size: 10px;
+    }
+
+    .catalog-panel {
+        width: 100vw;
+    }
+
+    .catalog-filters {
+        padding: 20px 18px 17px;
+    }
+
+    .catalog-search {
+        width: calc(100% - 70px);
+    }
+
+    .catalog-price-input {
+        width: 95px;
+    }
+
+    .catalog-list {
+        top: 165px;
+        padding: 12px 18px 115px;
+    }
+
+    .catalog-category {
+        padding: 17px 16px;
+        font-size: 13px;
+    }
+
+    body:has(.catalog-panel.open) .logo-link {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .scroll-top {
+        right: 18px;
+        bottom: 18px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .catalog-social {
+        padding: 14px 18px 18px;
+    }
+
+    .catalog-social-link {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 400px) {
+    .page {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .product-card {
+        padding: 14px;
+    }
+
+    .product-image {
+        height: 190px;
+    }
+
+    .product-name {
+        font-size: 17px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .view-button {
+        padding: 8px 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<a href="index.html" class="logo-link" id="logoLink">
+    <img src="images/logo.jpg" alt="My Wishlist" class="logo">
+</a>
+
+<!-- CATALOG BUTTON -->
+<button class="catalog-button" id="catalogButton"
+        type="button" aria-label="Open catalog" aria-expanded="false">
+    <span class="catalog-line"></span>
+    <span class="catalog-line"></span>
+    <span class="catalog-line"></span>
+</button>
+
+<!-- CATALOG PANEL -->
+<aside class="catalog-panel" id="catalogPanel" aria-hidden="true">
+
+    <div class="catalog-filters">
+        <input class="catalog-search" id="catalogSearch"
+               type="search" placeholder="Поиск..."
+               aria-label="Поиск" autocomplete="off">
+
+        <div class="catalog-price">
+            <div class="catalog-price-title">
+                <span>ЦЕНА ДО</span>
+                <input class="catalog-price-input" id="catalogPriceInput"
+                       type="number" min="0" placeholder="∞"
+                       aria-label="Максимальная цена">
+            </div>
+
+            <input type="range" class="catalog-price-slider"
+                   id="catalogPrice" min="0" max="100000"
+                   value="100000" step="100">
+        </div>
+    </div>
+
+    <div class="catalog-list" id="catalogList">
+        <button class="catalog-category" data-category="Peripherals" type="button">
+            <span>Всё для ПК/ноута</span>
+        </button>
+
+        <button class="catalog-category" data-category="TShirts" type="button">
+            <span>Футболки</span>
+        </button>
+
+        <button class="catalog-category" data-category="Hoodies" type="button">
+            <span>Зуб-худи</span>
+        </button>
+
+        <button class="catalog-category" data-category="Sneakers" type="button">
+            <span>Кроссовки</span>
+        </button>
+
+        <button class="catalog-category" data-category="Cases" type="button">
+            <span>Чехлы</span>
+        </button>
+
+        <button class="catalog-category" data-category="Vapes" type="button">
+            <span>Электронные сигареты</span>
+        </button>
+
+        <button class="catalog-category" data-category="Jewelry" type="button">
+            <span>Украшения</span>
+        </button>
+
+        <button class="catalog-category" data-category="Other" type="button">
+            <span>Другое</span>
+        </button>
+    </div>
+
+    <div class="catalog-social">
+        <div class="catalog-social-label">СВЯЗЬ</div>
+
+        <div class="catalog-social-links">
+            <a class="catalog-social-link"
+               href="https://www.instagram.com/t0p_f0r?stkn=NnpiMjZ4aG5vcDU3&utm_source=qr"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm0 2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4H7.2Zm9.95 1.5a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                </svg>
+            </a>
+
+            <a class="catalog-social-link"
+               href="https://t.me/@McQueenx95"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Telegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21.6 3.5 18.3 20c-.25 1.17-.92 1.46-1.87.91l-5.15-3.8-2.48 2.39-1.03.5.37-5.24 9.53-8.61c.41-.37-.09-.58-.64-.21L5.25 13.35.16 11.76c-1.11-.35-1.13-1.11.23-1.61L20.28 2.4c.93-.34 1.74.22 1.32 1.1Z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</aside>
+
+<!-- BACK TO TOP -->
+<button class="scroll-top" id="scrollTop"
+        aria-label="Back to top" type="button">
+    <span class="scroll-top-arrow"></span>
+</button>
+
+<!-- MAIN -->
+<main class="page">
+    <header class="header">
+        <h1 class="page-title">My Wishlist</h1>
+        <div class="page-subtitle">THINGS I WANT</div>
+    </header>
+
+    <nav class="categories">
+        <button class="category active" data-filter="all" type="button">ALL</button>
+        <button class="category" data-filter="Peripherals" type="button">PERIPHERALS</button>
+        <button class="category" data-filter="Clothes" type="button">CLOTHES</button>
+        <button class="category" data-filter="Other" type="button">OTHER</button>
+    </nav>
+
+    <section class="products">
+
+        <!-- 1. LOGITECH SUPERLIGHT -->
+        <article class="product-card"
+                 data-category="Peripherals"
+                 data-price="8549"
+                 data-page="page2.html">
+            <div class="product-image">
+                <img src="images/superlight-pink.webp"
+                     alt="Logitech G PRO X SUPERLIGHT 2 LIGHTSPEED">
+            </div>
+
+            <h2 class="product-name">
+                Logitech G PRO X SUPERLIGHT 2 LIGHTSPEED/SE
+            </h2>
+
+            <p class="product-description">
+                Лёгкая беспроводная игровая мышь
+                для моего будущего сетапа.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">от 4 899 ₴ до 8 549 ₴</span>
+                <a class="view-button" href="page2.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 2. HEADPHONES -->
+        <article class="product-card"
+                 data-category="Peripherals"
+                 data-price="8459"
+                 data-page="page3.html">
+            <div class="product-image">
+                <img src="images/headphones.webp"
+                     alt="Logitech G Pro X LightSpeed Wireless">
+            </div>
+
+            <h2 class="product-name">Logitech G Pro X LightSpeed Wireless</h2>
+
+            <p class="product-description">
+                Беспроводные игровые наушники
+                для моего будущего сетапа.
+                Цвет: чёрный.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">8 459 ₴</span>
+                <a class="view-button" href="page3.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 3. KEYBOARD -->
+        <article class="product-card"
+                 data-category="Peripherals"
+                 data-price="2999"
+                 data-page="page4.html">
+            <div class="product-image">
+                <img src="images/keyboard-white.png"
+                     alt="AULA F75 HE Dragan King Magnetic Switch Wireless">
+            </div>
+
+            <h2 class="product-name">
+                AULA F75 HE Dragan King Magnetic Switch Wireless
+            </h2>
+
+            <p class="product-description">
+                Игровая магнитная клавиатура
+                с беспроводным подключением.
+                Цвет: чёрный/белый.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">2 999 ₴</span>
+                <a class="view-button" href="page4.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 4. IPHONE 6S -->
+        <article class="product-card"
+                 data-category="Other"
+                 data-price="3799"
+                 data-page="page6.html">
+            <div class="product-image">
+                <img src="images/iphone6s.png"
+                     alt="Apple iPhone 6s 64 GB Space Gray">
+            </div>
+
+            <h2 class="product-name">Apple iPhone 6s 64 GB Space Gray</h2>
+
+            <p class="product-description">
+                Компактный смартфон Apple
+                в цвете Space Gray.
+                Память: 64 ГБ.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">3 799 ₴</span>
+                <a class="view-button" href="page6.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 5. MSI MONITOR -->
+        <article class="product-card"
+                 data-category="Peripherals"
+                 data-price="5899"
+                 data-page="page5.html">
+            <div class="product-image">
+                <img src="images/monitor.webp"
+                     alt="MSI MAG 245F X24 IPS Black 240Hz">
+            </div>
+
+            <h2 class="product-name">MSI MAG 245F X24 IPS Black 240Hz</h2>
+
+            <p class="product-description">
+                Игровой монитор MSI 23.8"
+                с IPS-матрицей и частотой 240 Гц.
+                Цвет: чёрный.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">5 899 ₴</span>
+                <a class="view-button" href="page5.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 6. SUPREME X NIKE AIR FORCE 1 -->
+        <article class="product-card"
+                 data-category="Clothes"
+                 data-catalog-category="Sneakers"
+                 data-price="2880"
+                 data-page="page7.html">
+            <div class="product-image">
+                <img src="images/airforce1-white.webp"
+                     alt="Supreme x Nike Air Force 1 Low White">
+            </div>
+
+            <h2 class="product-name">Supreme x Nike Air Force 1 Low White</h2>
+
+            <p class="product-description">
+                Supreme × Nike Air Force 1
+                в классическом белом цвете.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">2 880 ₴</span>
+                <a class="view-button" href="page7.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 7. AIR JORDAN 5 PSG -->
+        <article class="product-card"
+                 data-category="Clothes"
+                 data-catalog-category="Sneakers"
+                 data-price="3490"
+                 data-page="page8.html">
+            <div class="product-image">
+                <img src="images/air-jordan-5-psg.png"
+                     alt="Air Jordan 5 PSG">
+            </div>
+
+            <h2 class="product-name">Air Jordan 5 PSG</h2>
+
+            <p class="product-description">
+                Air Jordan 5 PSG
+                в стиле Paris Saint-Germain.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">3 490 ₴</span>
+                <a class="view-button" href="page8.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+        <!-- 8. HOODIE -->
+        <article class="product-card" data-category="Clothes">
+            <div class="product-image">
+                <span>PRODUCT IMAGE</span>
+            </div>
+
+            <h2 class="product-name">Hoodie</h2>
+
+            <p class="product-description">
+                A clean hoodie for everyday wear.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">0 ₴</span>
+                <button class="view-button" type="button">ПОСМОТРЕТЬ</button>
+            </div>
+        </article>
+
+        <!-- 9. DIOR MONOGRAM CROSSBODY BAG -->
+        <article class="product-card"
+                 data-category="Other"
+                 data-catalog-category="Other"
+                 data-price="1500"
+                 data-page="page9.html">
+            <div class="product-image">
+                <img src="images/dior-bag-1.png"
+                     alt="Мужская сумка Dior Monogram Crossbody Bag">
+            </div>
+
+            <h2 class="product-name">Dior Monogram Crossbody Bag</h2>
+
+            <p class="product-description">
+                Мужская сумка через плечо.
+                Чёрный цвет, размер 19,5 × 13 см.
+            </p>
+
+            <div class="product-bottom">
+                <span class="price">1 500 ₴</span>
+                <a class="view-button" href="page9.html">ПОСМОТРЕТЬ</a>
+            </div>
+        </article>
+
+    </section>
+</main>
+
+<script>
+/* RELOAD → MAIN PAGE */
+
+const navigationEntry = performance.getEntriesByType("navigation")[0];
+
+if (navigationEntry && navigationEntry.type === "reload") {
+    window.location.replace("index.html");
+}
+
+/* CATALOG */
+
+const catalogButton = document.getElementById("catalogButton");
+const catalogPanel = document.getElementById("catalogPanel");
+const catalogSearch = document.getElementById("catalogSearch");
+const catalogList = document.getElementById("catalogList");
+const catalogCategories = document.querySelectorAll(".catalog-category");
+
+function openCatalog() {
+    catalogButton.classList.add("active");
+    catalogButton.setAttribute("aria-expanded", "true");
+    catalogPanel.classList.add("open");
+    catalogPanel.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    setTimeout(() => catalogSearch.focus(), 180);
+}
+
+function closeCatalog() {
+    catalogButton.classList.remove("active");
+    catalogButton.setAttribute("aria-expanded", "false");
+    catalogPanel.classList.remove("open");
+    catalogPanel.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    catalogCategories.forEach(item => item.classList.remove("active"));
+    catalogSearch.value = "";
+    filterCatalog("");
+}
+
+catalogButton.addEventListener("click", () => {
+    if (catalogPanel.classList.contains("open")) {
+        closeCatalog();
+    } else {
+        openCatalog();
+    }
+});
+
+/* CATALOG SEARCH */
+
+function filterCatalog(value) {
+    const query = value.trim().toLowerCase();
+    const categories = Array.from(
+        catalogList.querySelectorAll(".catalog-category")
+    );
+
+    let visibleCount = 0;
+
+    categories.forEach(item => {
+        const visible = item.textContent.trim().toLowerCase().includes(query);
+        item.style.display = visible ? "flex" : "none";
+
+        if (visible) visibleCount++;
+    });
+
+    const oldEmpty = catalogList.querySelector(".catalog-empty");
+    if (oldEmpty) oldEmpty.remove();
+
+    if (visibleCount === 0 && query !== "") {
+        const empty = document.createElement("div");
+        empty.className = "catalog-empty";
+        empty.textContent = "Ничего не найдено";
+        catalogList.appendChild(empty);
+    }
+}
+
+catalogSearch.addEventListener("input", () => {
+    filterCatalog(catalogSearch.value);
+});
+
+/* CATALOG CATEGORY CLICK */
+
+catalogCategories.forEach(categoryButton => {
+    categoryButton.addEventListener("click", function() {
+        const categoryToFind = this.dataset.category;
+
+        catalogCategories.forEach(item => item.classList.remove("active"));
+        this.classList.add("active");
+
+        const products = document.querySelectorAll(".product-card");
+        let firstProduct = null;
+
+        products.forEach(product => {
+            if (
+                product.dataset.category === categoryToFind ||
+                product.dataset.catalogCategory === categoryToFind
+            ) {
+                if (!firstProduct) firstProduct = product;
+            }
+        });
+
+        closeCatalog();
+
+        if (firstProduct) {
+            setTimeout(() => {
+                firstProduct.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                firstProduct.style.boxShadow =
+                    "0 0 28px rgba(255,45,45,.22)";
+
+                setTimeout(() => {
+                    firstProduct.style.boxShadow = "";
+                }, 700);
+            }, 120);
+        }
+    });
+});
+
+/* ESC */
+
+document.addEventListener("keydown", event => {
+    if (
+        event.key === "Escape" &&
+        catalogPanel.classList.contains("open")
+    ) {
+        closeCatalog();
+    }
+});
+
+/* MAIN CATEGORY FILTER */
+
+const categoryButtons = document.querySelectorAll(".category");
+const productCards = document.querySelectorAll(".product-card");
+
+categoryButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        categoryButtons.forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        productCards.forEach(card => {
+            const category = card.dataset.category;
+
+            card.style.display =
+                filter === "all" || category === filter ? "flex" : "none";
+        });
+    });
+});
+
+/* PRICE FILTER */
+
+const catalogPrice = document.getElementById("catalogPrice");
+const catalogPriceInput = document.getElementById("catalogPriceInput");
+
+function applyPriceFilter(maxPrice) {
+    productCards.forEach(product => {
+        const priceElement = product.querySelector(".price");
+        if (!priceElement) return;
+
+        const price = product.dataset.price
+            ? Number(product.dataset.price)
+            : Number(priceElement.textContent.replace(/[^0-9.]/g, ""));
+
+        if (maxPrice === null || maxPrice === Infinity) {
+            product.style.display = "flex";
+            return;
+        }
+
+        product.style.display =
+            !isNaN(price) && price <= maxPrice ? "flex" : "none";
+    });
+}
+
+catalogPrice.addEventListener("input", function() {
+    const value = Number(this.value);
+
+    if (value >= Number(this.max)) {
+        catalogPriceInput.value = "";
+        catalogPriceInput.placeholder = "∞";
+        applyPriceFilter(Infinity);
+    } else {
+        catalogPriceInput.value = value;
+        applyPriceFilter(value);
+    }
+});
+
+catalogPriceInput.addEventListener("input", function() {
+    const value = this.value.replace(/[^0-9]/g, "");
+
+    if (value === "") {
+        catalogPrice.value = catalogPrice.max;
+        applyPriceFilter(Infinity);
+        return;
+    }
+
+    const number = Number(value);
+
+    if (number >= Number(catalogPrice.max)) {
+        catalogPrice.value = catalogPrice.max;
+        applyPriceFilter(Infinity);
+        return;
+    }
+
+    catalogPrice.value = number;
+    applyPriceFilter(number);
+});
+
+/* PRODUCT CARD CLICK */
+
+productCards.forEach(card => {
+    card.addEventListener("click", function(event) {
+        if (event.target.closest(".view-button")) return;
+
+        const page = this.dataset.page;
+        if (!page) return;
+
+        window.location.href = page;
+    });
+});
+
+/* LOGO → LANDING PAGE */
+
+const logoLink = document.getElementById("logoLink");
+
+logoLink.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    if (logoLink.classList.contains("clicked")) return;
+
+    logoLink.classList.add("clicked");
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 650);
+});
+
+/* BACK TO TOP */
+
+const scrollTopButton = document.getElementById("scrollTop");
+
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 280) {
+        scrollTopButton.classList.add("visible");
+    } else {
+        scrollTopButton.classList.remove("visible");
+    }
+}, { passive: true });
+
+scrollTopButton.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+</script>
+
+</body>
+</html>

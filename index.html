@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Wishlist</title>
+
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body {
+
+            background: #000;
+
+            color: #fff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow: hidden;
+
+            opacity: 1;
+
+            transition:
+                opacity 0.65s ease-in-out;
+        }
+
+
+        /* ================================
+           LOGO
+        ================================= */
+
+        .logo-link {
+
+            position: absolute;
+
+            top: 24px;
+            left: 40px;
+
+            width: 155px;
+            height: 100px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #000;
+
+            border:
+                1px solid #202020;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            z-index: 20;
+
+            /*
+                Появление логотипа
+            */
+
+            opacity: 0;
+
+            transform:
+                translateY(-15px)
+                scale(0.96);
+
+            animation:
+                logoIntro
+                1.2s
+                cubic-bezier(
+                    0.22,
+                    1,
+                    0.36,
+                    1
+                )
+                0.1s
+                forwards;
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.5s ease;
+        }
+
+
+        /* ================================
+           LOGO INTRO
+        ================================= */
+
+        @keyframes logoIntro {
+
+            0% {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(-15px)
+                    scale(0.96);
+
+                box-shadow:
+                    0 0 0
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0
+                    );
+            }
+
+            55% {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(2px)
+                    scale(1.015);
+
+                box-shadow:
+
+                    0 0 20px
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.08
+                    ),
+
+                    0 0 35px
+                    rgba(
+                        255,
+                        50,
+                        50,
+                        0.04
+                    );
+            }
+
+            100% {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+                box-shadow:
+                    0 0 0
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0
+                    );
+            }
+        }
+
+
+        /* ================================
+           LOGO IMAGE
+        ================================= */
+
+        .logo {
+
+            width: 140px;
+            height: 90px;
+
+            object-fit: contain;
+
+            display: block;
+
+            filter:
+                invert(1);
+
+            opacity: 0;
+
+            transform:
+                scale(0.96);
+
+            animation:
+                logoImageIntro
+                1.1s
+                cubic-bezier(
+                    0.22,
+                    1,
+                    0.36,
+                    1
+                )
+                0.2s
+                forwards;
+
+            transition:
+                transform 0.4s ease,
+                filter 0.45s ease;
+        }
+
+
+        @keyframes logoImageIntro {
+
+            0% {
+
+                opacity:
+                    0;
+
+                transform:
+                    scale(0.96);
+
+                filter:
+                    invert(1)
+                    brightness(0.6);
+            }
+
+            60% {
+
+                opacity:
+                    1;
+
+                transform:
+                    scale(1.025);
+
+                filter:
+                    invert(1)
+                    brightness(1.1)
+                    drop-shadow(
+                        0 0 10px
+                        rgba(
+                            255,
+                            255,
+                            255,
+                            0.18
+                        )
+                    );
+            }
+
+            100% {
+
+                opacity:
+                    1;
+
+                transform:
+                    scale(1);
+
+                filter:
+                    invert(1);
+            }
+        }
+
+
+        /* ================================
+           LOGO HOVER
+        ================================= */
+
+        .logo-link:hover {
+
+            transform:
+                translateY(-2px)
+                scale(1.02);
+
+            border-color:
+                #383838;
+
+            box-shadow:
+
+                0 0 20px
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                ),
+
+                0 0 30px
+                rgba(
+                    255,
+                    40,
+                    40,
+                    0.06
+                );
+        }
+
+
+        .logo-link:hover .logo {
+
+            transform:
+                scale(1.025);
+
+            filter:
+                invert(1)
+                drop-shadow(
+                    0 0 7px
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.22
+                    )
+                );
+        }
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .main {
+
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+
+        /* ================================
+           CONTENT
+        ================================= */
+
+        .content {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            transform:
+                translateY(12px);
+
+            animation:
+                contentAppear
+                1.1s
+                ease
+                0.15s
+                forwards;
+        }
+
+
+        @keyframes contentAppear {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(12px);
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ================================
+           TITLE
+        ================================= */
+
+        .title {
+
+            font-size:
+                clamp(
+                    55px,
+                    8vw,
+                    115px
+                );
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -4px;
+
+            line-height:
+                1;
+
+            color:
+                #fff;
+
+            animation:
+                titleSoftColor
+                6s
+                ease-in-out
+                1.5s
+                infinite;
+
+            will-change:
+                color;
+        }
+
+
+        @keyframes titleSoftColor {
+
+            0% {
+
+                color:
+                    #ffffff;
+            }
+
+            25% {
+
+                color:
+                    #ffffff;
+            }
+
+            50% {
+
+                color:
+                    #c98282;
+            }
+
+            75% {
+
+                color:
+                    #ffffff;
+            }
+
+            100% {
+
+                color:
+                    #ffffff;
+            }
+        }
+
+
+        /* ================================
+           SUBTITLE
+        ================================= */
+
+        .subtitle {
+
+            margin-top:
+                24px;
+
+            font-size:
+                15px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                7px;
+
+            color:
+                #d5d5d5;
+
+            opacity:
+                0.8;
+
+            animation:
+                subtitleBlink
+                4.5s
+                ease-in-out
+                1.5s
+                infinite;
+
+            will-change:
+                opacity;
+        }
+
+
+        @keyframes subtitleBlink {
+
+            0% {
+
+                opacity:
+                    0.8;
+            }
+
+            25% {
+
+                opacity:
+                    0.8;
+            }
+
+            50% {
+
+                opacity:
+                    0.25;
+            }
+
+            75% {
+
+                opacity:
+                    0.8;
+            }
+
+            100% {
+
+                opacity:
+                    0.8;
+            }
+        }
+
+
+        /* ================================
+           BUTTON
+        ================================= */
+
+        .wishlist-button {
+
+            position:
+                relative;
+
+            margin-top:
+                55px;
+
+            min-width:
+                225px;
+
+            height:
+                58px;
+
+            padding:
+                0 28px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                13px;
+
+            border:
+                1px solid #303030;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.035
+                );
+
+            color:
+                #d6d6d6;
+
+            font-size:
+                12px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                2px;
+
+            cursor:
+                pointer;
+
+            overflow:
+                hidden;
+
+            transition:
+
+                color 0.35s ease,
+
+                border-color 0.4s ease,
+
+                background 0.4s ease,
+
+                box-shadow 0.45s ease,
+
+                transform 0.35s ease;
+        }
+
+
+        /* ================================
+           BUTTON SHINE
+        ================================= */
+
+        .wishlist-button::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                0;
+
+            left:
+                -120%;
+
+            width:
+                75%;
+
+            height:
+                100%;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.16
+                    ),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            transition:
+                left 0.7s ease;
+        }
+
+
+        .wishlist-button:hover {
+
+            color:
+                #fff;
+
+            border-color:
+                #963b3b;
+
+            background:
+                rgba(
+                    150,
+                    40,
+                    40,
+                    0.08
+                );
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+
+                0 0 12px
+                rgba(
+                    255,
+                    55,
+                    55,
+                    0.16
+                ),
+
+                0 0 30px
+                rgba(
+                    255,
+                    35,
+                    35,
+                    0.08
+                );
+        }
+
+
+        .wishlist-button:hover::before {
+
+            left:
+                140%;
+        }
+
+
+        /* ================================
+           ARROW
+        ================================= */
+
+        .arrow {
+
+            font-size:
+                18px;
+
+            color:
+                #aaa;
+
+            transition:
+                transform 0.35s ease,
+                color 0.35s ease;
+        }
+
+
+        .wishlist-button:hover
+        .arrow {
+
+            transform:
+                translateX(5px);
+
+            color:
+                #ff9a9a;
+        }
+
+
+        /* ================================
+           CLICK
+        ================================= */
+
+        .wishlist-button.clicked {
+
+            color:
+                #fff;
+
+            border-color:
+                #ff5f5f;
+
+            background:
+                rgba(
+                    180,
+                    40,
+                    40,
+                    0.16
+                );
+
+            box-shadow:
+
+                0 0 15px
+                rgba(
+                    255,
+                    70,
+                    70,
+                    0.25
+                ),
+
+                0 0 45px
+                rgba(
+                    255,
+                    50,
+                    50,
+                    0.15
+                );
+
+            transform:
+                scale(0.97);
+        }
+
+
+        .wishlist-button.clicked
+        .arrow {
+
+            color:
+                #fff;
+
+            transform:
+                translateX(7px);
+        }
+
+
+        /* ================================
+           PAGE EXIT
+        ================================= */
+
+        body.page-exit {
+
+            opacity:
+                0;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            .logo-link {
+
+                top:
+                    18px;
+
+                left:
+                    18px;
+
+                width:
+                    125px;
+
+                height:
+                    80px;
+            }
+
+
+            .logo {
+
+                width:
+                    112px;
+
+                height:
+                    70px;
+            }
+
+
+            .title {
+
+                font-size:
+                    clamp(
+                        48px,
+                        14vw,
+                        75px
+                    );
+
+                letter-spacing:
+                    -3px;
+            }
+
+
+            .subtitle {
+
+                margin-top:
+                    20px;
+
+                font-size:
+                    12px;
+
+                letter-spacing:
+                    5px;
+            }
+
+
+            .wishlist-button {
+
+                min-width:
+                    190px;
+
+                height:
+                    54px;
+
+                margin-top:
+                    45px;
+
+                font-size:
+                    11px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         LOGO
+    ================================= -->
+
+    <a
+        href="index.html"
+        class="logo-link"
+    >
+
+        <img
+            src="images/logo.jpg"
+            alt="McQueen"
+            class="logo"
+        >
+
+    </a>
+
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="main">
+
+
+        <div class="content">
+
+
+            <h1 class="title">
+                My Wishlist
+            </h1>
+
+
+            <div class="subtitle">
+                BY MCQUEEN
+            </div>
+
+
+            <button
+                class="wishlist-button"
+                id="wishlistButton"
+            >
+
+                <span>
+                    VIEW WISHLIST
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        const button =
+            document.getElementById(
+                "wishlistButton"
+            );
+
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    button.classList.contains(
+                        "clicked"
+                    )
+                ) {
+
+                    return;
+                }
+
+
+                button.classList.add(
+                    "clicked"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        document.body.classList.add(
+                            "page-exit"
+                        );
+
+
+                        setTimeout(
+                            function() {
+
+                                window.location.href =
+                                    "products.html";
+
+                            },
+                            650
+                        );
+
+                    },
+                    180
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

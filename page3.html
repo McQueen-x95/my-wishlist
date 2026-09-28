@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Wishlist — Logitech G Pro X LightSpeed Wireless</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 * {
     margin: 0;
@@ -483,7 +485,7 @@ body {
     color: #000;
 }
 
-.reserve-button:hover {
+.reserve-button:hover:not(:disabled) {
     background: #ff2020;
     border-color: #ff2020;
     color: #fff;
@@ -494,9 +496,14 @@ body {
     transform: translateY(-2px);
 }
 
+.reserve-button:disabled {
+    cursor: wait;
+    opacity: .7;
+}
+
 /* НОВАЯ АНИМАЦИЯ НАЖАТИЯ */
 
-.reserve-button:active {
+.reserve-button:active:not(:disabled) {
     transform: scale(.91);
 
     background: #d60000;
@@ -782,8 +789,9 @@ body {
 
                 <button
                     class="reserve-button"
-                    id="reserveButton">
-                    ЗАБРОНИРОВАТЬ
+                    id="reserveButton"
+                    disabled>
+                    ПОДКЛЮЧЕНИЕ...
                 </button>
 
                 <button
@@ -796,8 +804,8 @@ body {
 
             <div
                 class="reserve-message"
-                id="reserveMessage">
-                Товар добавлен в список бронирования
+                id="reserveMessage"
+                aria-live="polite">
             </div>
 
         </div>
@@ -822,6 +830,312 @@ if (
 ) {
     window.location.replace("index.html");
 }
+
+
+/* ==================================================
+   SUPABASE — СИСТЕМА БРОНИРОВАНИЯ
+================================================== */
+
+const SUPABASE_URL =
+    "https://ucsbjfouyteyxaojrudb.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_LuQk6LrHSJB5HXbzSJvQyw_Loj5L9QM";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+const RESERVATION_PRODUCT_ID =
+    "logitech-headphones-black";
+
+let currentUser = null;
+let currentReservation = null;
+let reservationLoading = false;
+let reservationMessageTimeout = null;
+
+
+/* ==================================================
+   СООБЩЕНИЯ БРОНИРОВАНИЯ
+================================================== */
+
+function showReservationMessage(message) {
+
+    clearTimeout(reservationMessageTimeout);
+
+    reserveMessage.classList.remove("show");
+
+    void reserveMessage.offsetWidth;
+
+    reserveMessage.textContent = message;
+
+    reserveMessage.classList.add("show");
+
+    reservationMessageTimeout = setTimeout(() => {
+
+        reserveMessage.classList.remove("show");
+
+    }, 3500);
+
+}
+
+
+/* ==================================================
+   ОБНОВЛЕНИЕ СОСТОЯНИЯ КНОПКИ
+================================================== */
+
+function updateReservationButton() {
+
+    if (reservationLoading || !currentUser) {
+
+        reserveButton.disabled = true;
+        reserveButton.textContent = "ПОДКЛЮЧЕНИЕ...";
+
+        return;
+    }
+
+    if (!currentReservation) {
+
+        reserveButton.disabled = false;
+        reserveButton.textContent = "ЗАБРОНИРОВАТЬ";
+
+        return;
+    }
+
+    if (currentReservation.user_id === currentUser.id) {
+
+        reserveButton.disabled = false;
+        reserveButton.textContent = "ОТМЕНИТЬ БРОНЬ";
+
+        return;
+    }
+
+    reserveButton.disabled = true;
+    reserveButton.textContent = "УЖЕ ЗАБРОНИРОВАНО";
+
+}
+
+
+/* ==================================================
+   ПОЛУЧЕНИЕ ТЕКУЩЕЙ БРОНИ
+================================================== */
+
+async function refreshReservation() {
+
+    if (!currentUser) return;
+
+    const { data, error } = await supabaseClient
+        .from("reservations")
+        .select("product_id, user_id, created_at")
+        .eq("product_id", RESERVATION_PRODUCT_ID)
+        .maybeSingle();
+
+    if (error) {
+
+        console.error("Ошибка проверки брони:", error);
+
+        return;
+    }
+
+    currentReservation = data;
+
+    updateReservationButton();
+
+}
+
+
+/* ==================================================
+   ПОДКЛЮЧЕНИЕ И АВТОРИЗАЦИЯ
+================================================== */
+
+async function initializeReservation() {
+
+    try {
+
+        const { data: sessionData, error: sessionError } =
+            await supabaseClient.auth.getSession();
+
+        if (sessionError) {
+            throw sessionError;
+        }
+
+        currentUser = sessionData.session?.user ?? null;
+
+        if (!currentUser) {
+
+            const { data, error } =
+                await supabaseClient.auth.signInAnonymously();
+
+            if (error) {
+                throw error;
+            }
+
+            currentUser = data.user;
+        }
+
+        await refreshReservation();
+
+        updateReservationButton();
+
+    } catch (error) {
+
+        console.error("Ошибка подключения Supabase:", error);
+
+        reserveButton.disabled = true;
+        reserveButton.textContent = "ОШИБКА ПОДКЛЮЧЕНИЯ";
+
+        showReservationMessage(
+            "Не удалось подключиться к бронированию. Обнови страницу."
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   НАЖАТИЕ КНОПКИ БРОНИРОВАНИЯ
+================================================== */
+
+reserveButton.addEventListener("click", async () => {
+
+    if (!currentUser || reservationLoading) return;
+
+    /* Анимация нажатия */
+
+    reserveButton.classList.remove("reserve-click");
+
+    void reserveButton.offsetWidth;
+
+    reserveButton.classList.add("reserve-click");
+
+
+    reservationLoading = true;
+
+    reserveButton.disabled = true;
+    reserveButton.textContent = "ОБРАБОТКА...";
+
+    try {
+
+        /* Сначала проверяем актуальное состояние */
+
+        await refreshReservation();
+
+        /* Если товар забронировал другой пользователь */
+
+        if (
+            currentReservation &&
+            currentReservation.user_id !== currentUser.id
+        ) {
+
+            showReservationMessage(
+                "Этот товар уже забронирован."
+            );
+
+            return;
+        }
+
+
+        /* Если бронь принадлежит текущему пользователю — отменяем */
+
+        if (
+            currentReservation &&
+            currentReservation.user_id === currentUser.id
+        ) {
+
+            const { error } = await supabaseClient
+                .from("reservations")
+                .delete()
+                .eq("product_id", RESERVATION_PRODUCT_ID)
+                .eq("user_id", currentUser.id);
+
+            if (error) {
+                throw error;
+            }
+
+            currentReservation = null;
+
+            showReservationMessage(
+                "Ваша бронь отменена."
+            );
+
+        } else {
+
+            /* Создаём новую бронь */
+
+            const { data, error } = await supabaseClient
+                .from("reservations")
+                .insert({
+                    product_id: RESERVATION_PRODUCT_ID,
+                    user_id: currentUser.id
+                })
+                .select("product_id, user_id, created_at")
+                .single();
+
+            if (error) {
+
+                if (error.code === "23505") {
+
+                    showReservationMessage(
+                        "Этот товар уже забронировали."
+                    );
+
+                    await refreshReservation();
+
+                    return;
+                }
+
+                throw error;
+            }
+
+            currentReservation = data;
+
+            showReservationMessage(
+                "Товар успешно забронирован!"
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error("Ошибка бронирования:", error);
+
+        showReservationMessage(
+            "Не удалось выполнить действие. Попробуй ещё раз."
+        );
+
+    } finally {
+
+        reservationLoading = false;
+
+        await refreshReservation();
+
+        updateReservationButton();
+
+    }
+
+});
+
+
+/* ==================================================
+   ПРОВЕРКА БРОНИ КАЖДЫЕ 5 СЕКУНД
+================================================== */
+
+setInterval(() => {
+
+    if (currentUser && !reservationLoading) {
+        refreshReservation();
+    }
+
+}, 5000);
+
+
+/* ==================================================
+   ЗАПУСК БРОНИРОВАНИЯ
+================================================== */
+
+initializeReservation();
 
 
 /* ==================================================
@@ -863,12 +1177,6 @@ const productPrice =
 
 const websiteButton =
     document.getElementById("websiteButton");
-
-const reserveButton =
-    document.getElementById("reserveButton");
-
-const reserveMessage =
-    document.getElementById("reserveMessage");
 
 const colorButtons =
     document.querySelectorAll(".color-button");
@@ -1165,51 +1473,6 @@ websiteButton.addEventListener("click", () => {
         website,
         "_blank"
     );
-
-});
-
-
-/* ==================================================
-   ЗАБРОНИРОВАТЬ
-================================================== */
-
-reserveButton.addEventListener("click", () => {
-
-    /* перезапускаем анимацию */
-
-    reserveButton.classList.remove(
-        "reserve-click"
-    );
-
-    void reserveButton.offsetWidth;
-
-    reserveButton.classList.add(
-        "reserve-click"
-    );
-
-
-    /* сообщение */
-
-    reserveMessage.classList.remove(
-        "show"
-    );
-
-    void reserveMessage.offsetWidth;
-
-    reserveMessage.classList.add(
-        "show"
-    );
-
-
-    /* через время скрываем */
-
-    setTimeout(() => {
-
-        reserveMessage.classList.remove(
-            "show"
-        );
-
-    }, 2500);
 
 });
 

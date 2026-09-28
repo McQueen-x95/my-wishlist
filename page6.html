@@ -2,18 +2,10 @@
 <html lang="ru">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-    My Wishlist — Apple iPhone 6s 64 GB Space Gray
-</title>
-
+<title>My Wishlist — Apple iPhone 6s 64 GB Space Gray</title>
 
 <style>
 
@@ -32,15 +24,10 @@ html {
 }
 
 body {
-
     background: #000;
-
     color: #fff;
-
     font-family: Arial, sans-serif;
-
     min-height: 100vh;
-
     overflow-x: hidden;
 }
 
@@ -50,34 +37,20 @@ body {
 ================================================== */
 
 .back-button {
-
     position: fixed;
-
     top: 30px;
     left: 35px;
-
     z-index: 100;
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 10px;
-
     padding: 13px 22px;
-
     color: #fff;
-
     text-decoration: none;
-
     font-size: 14px;
-
     letter-spacing: 2px;
-
     border: 1px solid rgba(255,255,255,.25);
-
     border-radius: 30px;
-
     background: rgba(255,255,255,.04);
 
     transition:
@@ -87,35 +60,22 @@ body {
         transform .2s ease,
         box-shadow .3s ease;
 
-    animation:
-        backAppear .7s ease forwards;
+    animation: backAppear .7s ease forwards;
 }
 
-
 .back-button:hover {
-
     color: #ff2b2b;
-
-    border-color:
-        rgba(255,40,40,.7);
-
-    background:
-        rgba(255,0,0,.06);
+    border-color: rgba(255,40,40,.7);
+    background: rgba(255,0,0,.06);
 
     box-shadow:
         0 0 15px rgba(255,0,0,.15),
         inset 0 0 12px rgba(255,0,0,.05);
 }
 
-
 .back-button:active {
-
-    transform:
-        translateX(-5px)
-        scale(.94);
-
+    transform: translateX(-5px) scale(.94);
     color: #ff0000;
-
     border-color: #ff0000;
 
     box-shadow:
@@ -123,23 +83,15 @@ body {
         inset 0 0 15px rgba(255,0,0,.12);
 }
 
-
 @keyframes backAppear {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateX(-30px);
+        transform: translateX(-30px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 }
 
@@ -149,32 +101,18 @@ body {
 ================================================== */
 
 .product-page {
-
     min-height: 100vh;
-
-    padding:
-        90px
-        50px
-        60px;
+    padding: 90px 50px 60px;
 }
 
-
 .product-container {
-
     width: 100%;
-
     max-width: 1250px;
-
     margin: 0 auto;
 
     display: grid;
-
-    grid-template-columns:
-        1.15fr
-        .85fr;
-
+    grid-template-columns: 1.15fr .85fr;
     gap: 65px;
-
     align-items: center;
 }
 
@@ -184,70 +122,41 @@ body {
 ================================================== */
 
 .gallery {
-
     height: 600px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     position: relative;
 
-    animation:
-        galleryAppear
-        .8s ease
-        forwards;
+    animation: galleryAppear .8s ease forwards;
 }
 
-
 @keyframes galleryAppear {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateX(-35px);
+        transform: translateX(-35px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 }
 
-
 .image-container {
-
     width: 560px;
-
     height: 560px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     position: relative;
 }
 
-
 .product-image {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: contain;
-
     opacity: 1;
-
     transform: scale(1);
 
     transition:
@@ -255,11 +164,8 @@ body {
         transform .25s ease;
 }
 
-
 .product-image.changing {
-
     opacity: .38;
-
     transform: scale(.92);
 }
 
@@ -269,86 +175,46 @@ body {
 ================================================== */
 
 .product-info {
-
     display: flex;
-
     flex-direction: column;
-
     align-items: flex-start;
 }
 
-
 .brand {
-
     font-size: 13px;
-
     letter-spacing: 5px;
-
     color: #888;
-
     margin-bottom: 15px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .18s
-        both;
+    animation: infoItemAppear .65s ease .18s both;
 }
 
-
 .product-title {
-
-    font-size:
-        clamp(
-            34px,
-            4vw,
-            58px
-        );
-
+    font-size: clamp(34px, 4vw, 58px);
     line-height: 1.05;
-
     font-weight: 700;
-
     margin-bottom: 25px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .28s
-        both;
+    animation: infoItemAppear .65s ease .28s both;
 
     transition:
         opacity .22s ease,
         transform .22s ease;
 }
 
-
 .product-title.title-changing {
-
     opacity: 0;
-
-    transform:
-        translateY(8px);
+    transform: translateY(8px);
 }
 
-
 .product-description {
-
     max-width: 500px;
-
     color: #999;
-
     font-size: 15px;
-
     line-height: 1.7;
-
     margin-bottom: 35px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .39s
-        both;
+    animation: infoItemAppear .65s ease .39s both;
 }
 
 
@@ -357,53 +223,28 @@ body {
 ================================================== */
 
 .color-title {
-
     font-size: 13px;
-
     letter-spacing: 3px;
-
     color: #888;
-
     margin-bottom: 15px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .50s
-        both;
+    animation: infoItemAppear .65s ease .50s both;
 }
-
 
 .color-options {
-
     display: flex;
-
     gap: 14px;
-
     margin-bottom: 35px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .58s
-        both;
+    animation: infoItemAppear .65s ease .58s both;
 }
 
-
 .color-button {
-
     width: 32px;
-
     height: 32px;
-
     border-radius: 50%;
-
-    border:
-        2px solid
-        transparent;
-
+    border: 2px solid transparent;
     cursor: pointer;
-
     position: relative;
 
     transition:
@@ -412,80 +253,40 @@ body {
         box-shadow .25s ease;
 }
 
-
 .color-button::after {
-
     content: "";
-
     position: absolute;
-
     inset: -6px;
-
     border-radius: 50%;
-
-    border:
-        1px solid
-        transparent;
+    border: 1px solid transparent;
 
     transition:
         border-color .25s ease,
         box-shadow .25s ease;
 }
 
-
 .color-button:hover {
-
-    transform:
-        scale(1.16);
+    transform: scale(1.16);
 }
-
 
 .color-button.active {
-
-    transform:
-        scale(1.15);
-
-    border-color:
-        #fff;
+    transform: scale(1.15);
+    border-color: #fff;
 }
-
 
 .color-button.active::after {
-
-    border-color:
-        rgba(255,255,255,.35);
-
-    box-shadow:
-        0 0 12px
-        rgba(255,255,255,.18);
+    border-color: rgba(255,255,255,.35);
+    box-shadow: 0 0 12px rgba(255,255,255,.18);
 }
-
 
 .color-space-gray {
-
-    background:
-        linear-gradient(
-            135deg,
-            #686868,
-            #252525
-        );
-
-    border-color:
-        #777;
+    background: linear-gradient(135deg, #686868, #252525);
+    border-color: #777;
 }
 
-
 .color-silver {
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #bdbdbd
-        );
-
-    border-color:
-        #d8d8d8;
+    background: linear-gradient(135deg, #ffffff, #bdbdbd);
+    border-color: #d8d8d8;
 }
 
 
@@ -494,34 +295,21 @@ body {
 ================================================== */
 
 .product-price {
-
     font-size: 32px;
-
     font-weight: 700;
-
     margin-bottom: 30px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .68s
-        both;
+    animation: infoItemAppear .65s ease .68s both;
 
     transition:
         opacity .22s ease,
         transform .22s ease;
 }
 
-
 .product-price.price-changing {
-
     opacity: .72;
-
-    transform:
-        translateY(0);
-
-    transition:
-        opacity .16s ease;
+    transform: translateY(0);
+    transition: opacity .16s ease;
 }
 
 
@@ -530,32 +318,18 @@ body {
 ================================================== */
 
 .product-buttons {
-
     display: flex;
-
     gap: 14px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .80s
-        both;
+    animation: infoItemAppear .65s ease .80s both;
 }
-
 
 .reserve-button,
 .website-button {
-
-    padding:
-        15px
-        25px;
-
+    padding: 15px 25px;
     border-radius: 30px;
-
     font-size: 13px;
-
     letter-spacing: 1.5px;
-
     cursor: pointer;
 
     transition:
@@ -566,111 +340,57 @@ body {
         box-shadow .25s ease;
 }
 
-
 .reserve-button {
-
-    border:
-        1px solid #fff;
-
-    background:
-        #fff;
-
-    color:
-        #000;
+    border: 1px solid #fff;
+    background: #fff;
+    color: #000;
 }
 
+.reserve-button:hover:not(:disabled) {
+    background: #ff2020;
+    border-color: #ff2020;
+    color: #fff;
 
-.reserve-button:hover {
+    box-shadow: 0 0 25px rgba(255,0,0,.35);
+    transform: translateY(-2px);
+}
 
-    background:
-        #ff2020;
-
-    border-color:
-        #ff2020;
-
-    color:
-        #fff;
+.reserve-button:active:not(:disabled) {
+    transform: scale(.91);
+    background: #d60000;
+    border-color: #d60000;
+    color: #fff;
 
     box-shadow:
-        0 0 25px
-        rgba(255,0,0,.35);
-
-    transform:
-        translateY(-2px);
+        0 0 35px rgba(255,0,0,.65),
+        0 0 60px rgba(255,0,0,.25),
+        inset 0 0 15px rgba(255,255,255,.15);
 }
 
-
-.reserve-button:active {
-
-    transform:
-        scale(.91);
-
-    background:
-        #d60000;
-
-    border-color:
-        #d60000;
-
-    color:
-        #fff;
-
-    box-shadow:
-        0 0 35px
-        rgba(255,0,0,.65),
-
-        0 0 60px
-        rgba(255,0,0,.25),
-
-        inset 0 0 15px
-        rgba(255,255,255,.15);
+.reserve-button:disabled {
+    cursor: default;
+    opacity: .75;
 }
-
 
 .website-button {
-
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
-    background:
-        transparent;
-
-    color:
-        #fff;
+    border: 1px solid rgba(255,255,255,.25);
+    background: transparent;
+    color: #fff;
 }
-
 
 .website-button:hover {
+    border-color: rgba(255,0,0,.7);
+    color: #ff2020;
 
-    border-color:
-        rgba(255,0,0,.7);
-
-    color:
-        #ff2020;
-
-    box-shadow:
-        0 0 18px
-        rgba(255,0,0,.15);
-
-    transform:
-        translateY(-2px);
+    box-shadow: 0 0 18px rgba(255,0,0,.15);
+    transform: translateY(-2px);
 }
 
-
 .website-button:active {
-
-    transform:
-        scale(.94);
-
-    color:
-        #ff0000;
-
-    border-color:
-        #ff0000;
-
-    box-shadow:
-        0 0 28px
-        rgba(255,0,0,.45);
+    transform: scale(.94);
+    color: #ff0000;
+    border-color: #ff0000;
+    box-shadow: 0 0 28px rgba(255,0,0,.45);
 }
 
 
@@ -679,58 +399,33 @@ body {
 ================================================== */
 
 .reserve-message {
-
     margin-top: 18px;
-
-    color:
-        #ff3030;
-
+    color: #ff3030;
     font-size: 13px;
-
     letter-spacing: 1px;
-
     opacity: 0;
-
-    transform:
-        translateY(8px);
-
+    transform: translateY(8px);
     pointer-events: none;
 }
 
-
 .reserve-message.show {
-
-    animation:
-        reserveMessage
-        .55s ease
-        forwards;
+    animation: reserveMessage .55s ease forwards;
 }
 
-
 @keyframes reserveMessage {
-
     0% {
-
         opacity: 0;
-
-        transform:
-            translateY(8px);
+        transform: translateY(8px);
     }
 
     40% {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 
     100% {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -740,21 +435,14 @@ body {
 ================================================== */
 
 @keyframes infoItemAppear {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(22px);
+        transform: translateY(22px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -764,134 +452,81 @@ body {
 ================================================== */
 
 @media (max-width: 900px) {
-
     .product-container {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
         gap: 30px;
     }
 
-
     .gallery {
-
         height: 500px;
     }
 
-
     .image-container {
-
         width: 470px;
-
         height: 470px;
     }
 
-
     .product-info {
-
         align-items: center;
-
         text-align: center;
     }
 
-
     .product-description {
-
         max-width: 600px;
     }
 
-
     .color-options {
-
         justify-content: center;
     }
 
-
     .product-buttons {
-
         justify-content: center;
-
         flex-wrap: wrap;
     }
 }
 
-
 @media (max-width: 600px) {
-
     .product-page {
-
-        padding:
-            100px
-            20px
-            45px;
+        padding: 100px 20px 45px;
     }
 
-
     .back-button {
-
         top: 20px;
-
         left: 20px;
-
-        padding:
-            10px
-            17px;
-
+        padding: 10px 17px;
         font-size: 11px;
     }
 
-
     .gallery {
-
         height: 390px;
     }
 
-
     .image-container {
-
         width: 340px;
-
         height: 340px;
     }
 
-
     .product-title {
-
         font-size: 35px;
     }
 
-
     .product-description {
-
         font-size: 14px;
     }
 
-
     .product-price {
-
         font-size: 28px;
     }
 
-
     .product-buttons {
-
         width: 100%;
-
         flex-direction: column;
-
         align-items: center;
     }
 
-
     .reserve-button,
     .website-button {
-
-        width:
-            min(
-                100%,
-                300px
-            );
+        width: min(100%, 300px);
     }
 }
 
@@ -899,34 +534,26 @@ body {
 
 </head>
 
-
 <body>
-
 
 <!-- ==================================================
      НАЗАД
 ================================================== -->
 
-<a
-    href="products.html"
-    class="back-button"
->
+<a href="products.html" class="back-button">
     ← НАЗАД
 </a>
 
-
 <main class="product-page">
 
-
     <div class="product-container">
-
 
         <!-- ==================================================
              ГАЛЕРЕЯ
         ================================================== -->
 
         <div class="gallery">
-<div class="image-container">
+            <div class="image-container">
 
                 <img
                     id="productImage"
@@ -936,8 +563,7 @@ body {
                 >
 
             </div>
-</div>
-
+        </div>
 
         <!-- ==================================================
              ИНФОРМАЦИЯ
@@ -945,83 +571,57 @@ body {
 
         <div class="product-info">
 
-
             <div class="brand">
                 APPLE
             </div>
 
-
-            <h1
-                class="product-title"
-                id="productTitle"
-            >
+            <h1 class="product-title" id="productTitle">
                 iPhone 6s
                 64 GB Space Gray
             </h1>
 
-
             <p class="product-description">
-
                 Apple iPhone 6s с памятью 64 ГБ
                 в цвете Space Gray.
                 Компактный смартфон с классическим
                 дизайном Apple.
-
             </p>
-
 
             <div class="color-title">
                 ЦВЕТ
             </div>
 
-
             <div class="color-options">
 
                 <button
-                    class="
-                        color-button
-                        color-space-gray
-                        active
-                    "
+                    class="color-button color-space-gray active"
                     data-color="space-gray"
                     aria-label="Space Gray"
                     type="button"
-                >
-                </button>
+                ></button>
 
                 <button
-                    class="
-                        color-button
-                        color-silver
-                    "
+                    class="color-button color-silver"
                     data-color="silver"
                     aria-label="Silver"
                     type="button"
-                >
-                </button>
+                ></button>
 
             </div>
 
-
-            <div
-                class="product-price"
-                id="productPrice"
-            >
+            <div class="product-price" id="productPrice">
                 3 799 ₴
             </div>
 
-
             <div class="product-buttons">
-
 
                 <button
                     class="reserve-button"
                     id="reserveButton"
                     type="button"
                 >
-                    ЗАБРОНИРОВАТЬ
+                    ЗАГРУЗКА...
                 </button>
-
 
                 <button
                     class="website-button"
@@ -1031,50 +631,54 @@ body {
                     ПОСМОТРЕТЬ НА САЙТЕ
                 </button>
 
-
             </div>
 
-
-            <div
-                class="reserve-message"
-                id="reserveMessage"
-            >
+            <div class="reserve-message" id="reserveMessage">
                 Товар добавлен в список бронирования
             </div>
 
-
         </div>
-
 
     </div>
 
-
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
 
 /* ==================================================
    ПЕРЕХОД НА ПЕРВУЮ СТРАНИЦУ ПРИ ОБНОВЛЕНИИ
 ================================================== */
 
 const navigationEntry =
-    performance.getEntriesByType(
-        "navigation"
-    )[0];
-
+    performance.getEntriesByType("navigation")[0];
 
 if (
     navigationEntry &&
     navigationEntry.type === "reload"
 ) {
-
-    window.location.replace(
-        "index.html"
-    );
-
+    window.location.replace("index.html");
 }
+
+
+/* ==================================================
+   SUPABASE — ОБЩАЯ СИСТЕМА БРОНИРОВАНИЯ
+================================================== */
+
+const SUPABASE_URL =
+    "https://ucsbjfouyteyxaojrudb.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_LuQk6LrHSJB5HXbzSJvQyw_Loj5L9QM";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+let currentUser = null;
+let reservationBusy = false;
 
 
 /* ==================================================
@@ -1084,41 +688,31 @@ if (
 const colors = {
 
     "space-gray": {
-
-        title:
-            "iPhone 6s 64 GB Space Gray",
-
-        price:
-            "3 799 ₴",
+        title: "iPhone 6s 64 GB Space Gray",
+        price: "3 799 ₴",
 
         website:
             "https://synthetic.ua/ru/product/smartfon-apple-iphone-6s-64-gb-space-gray/P02411EC/CS9KT7YUK?utm_source=google&utm_medium=cpc&campaign_id=23830518853&adgroup_id=198766334600&ad_id=808016397028&utm_term=&gad_source=1&gad_campaignid=23830518853&gbraid=0AAAAACzPbZ83PW3JKJpKcuysYHnCsucGn&gclid=Cj0KCQjwt9jVBhDXARIsAFSP-6cvAXHVmkEam9jWa6ASKC07KlCL-jJatU4u9VAKKdNgMK3tL_PUHeAaApcYEALw_wcB",
 
         images: [
-
             "images/iphone6s.png"
+        ],
 
-        ]
-
+        reservationId: "apple-iphone-6s-space-gray"
     },
 
     "silver": {
-
-        title:
-            "iPhone 6s 64 GB Silver",
-
-        price:
-            "3 799 ₴",
+        title: "iPhone 6s 64 GB Silver",
+        price: "3 799 ₴",
 
         website:
             "https://synthetic.ua/ru/product/smartfon-apple-iphone-6s-64-gb-silver/P04056FO/CS4AN6FHQ?utm_source=google&utm_medium=cpc&campaign_id=23830518853&adgroup_id=198766334600&ad_id=808016397028&utm_term=&gad_source=1&gad_campaignid=23830518853&gbraid=0AAAAACzPbZ83PW3JKJpKcuysYHnCsucGn&gclid=Cj0KCQjwt9jVBhDXARIsAFSP-6cmbV6ZRqx7Dk_OaQvG-ueaHkZZMs4K2_EP7AHR3hgpFNCoOIfKmFMaAr3HEALw_wcB",
 
         images: [
-
             "images/iphone6s-silver.png"
+        ],
 
-        ]
-
+        reservationId: "apple-iphone-6s-silver"
     }
 
 };
@@ -1129,81 +723,167 @@ const colors = {
 ================================================== */
 
 const productImage =
-    document.getElementById(
-        "productImage"
-    );
-
+    document.getElementById("productImage");
 
 const productTitle =
-    document.getElementById(
-        "productTitle"
-    );
-
+    document.getElementById("productTitle");
 
 const productPrice =
-    document.getElementById(
-        "productPrice"
-    );
-
+    document.getElementById("productPrice");
 
 const websiteButton =
-    document.getElementById(
-        "websiteButton"
-    );
-
+    document.getElementById("websiteButton");
 
 const reserveButton =
-    document.getElementById(
-        "reserveButton"
-    );
-
+    document.getElementById("reserveButton");
 
 const reserveMessage =
-    document.getElementById(
-        "reserveMessage"
-    );
-
+    document.getElementById("reserveMessage");
 
 const colorButtons =
-    document.querySelectorAll(
-        ".color-button"
-    );
+    document.querySelectorAll(".color-button");
+
+
 /* ==================================================
    ПЕРЕМЕННЫЕ
 ================================================== */
 
-let currentColor =
-    "space-gray";
+let currentColor = "space-gray";
+let currentImage = 0;
+let colorChanging = false;
 
 
-let currentImage =
-    0;
+/* ==================================================
+   СООБЩЕНИЕ БРОНИРОВАНИЯ
+================================================== */
+
+function showReserveMessage(message) {
+    reserveMessage.textContent = message;
+
+    reserveMessage.classList.remove("show");
+    void reserveMessage.offsetWidth;
+    reserveMessage.classList.add("show");
+
+    setTimeout(() => {
+        reserveMessage.classList.remove("show");
+    }, 3000);
+}
 
 
-let colorChanging =
-    false;
+/* ==================================================
+   ID ТЕКУЩЕГО ЦВЕТА
+================================================== */
+
+function getCurrentReservationId() {
+    return colors[currentColor].reservationId;
+}
+
+
+/* ==================================================
+   ОБНОВЛЕНИЕ СОСТОЯНИЯ БРОНИ
+================================================== */
+
+async function refreshReservationStatus() {
+
+    if (!currentUser) {
+        reserveButton.textContent = "ЗАГРУЗКА...";
+        reserveButton.disabled = true;
+        return;
+    }
+
+    const reservationId = getCurrentReservationId();
+
+    const { data, error } = await supabaseClient
+        .from("reservations")
+        .select("user_id")
+        .eq("product_id", reservationId)
+        .maybeSingle();
+
+    if (error) {
+        console.error("Ошибка проверки брони:", error);
+
+        reserveButton.textContent = "ОШИБКА БРОНИ";
+        reserveButton.disabled = true;
+
+        showReserveMessage(
+            "Не удалось проверить бронь. Обновите страницу."
+        );
+
+        return;
+    }
+
+    reserveButton.disabled = false;
+
+    if (!data) {
+        reserveButton.textContent = "ЗАБРОНИРОВАТЬ";
+        return;
+    }
+
+    if (data.user_id === currentUser.id) {
+        reserveButton.textContent = "ОТМЕНИТЬ БРОНЬ";
+    } else {
+        reserveButton.textContent = "УЖЕ ЗАБРОНИРОВАНО";
+    }
+}
+
+
+/* ==================================================
+   ВХОД АНОНИМНОГО ПОЛЬЗОВАТЕЛЯ
+================================================== */
+
+async function initializeReservation() {
+
+    reserveButton.textContent = "ЗАГРУЗКА...";
+    reserveButton.disabled = true;
+
+    const {
+        data: { session },
+        error: sessionError
+    } = await supabaseClient.auth.getSession();
+
+    if (sessionError) {
+        console.error("Ошибка получения сессии:", sessionError);
+    }
+
+    if (session?.user) {
+        currentUser = session.user;
+    } else {
+        const { data, error } =
+            await supabaseClient.auth.signInAnonymously();
+
+        if (error) {
+            console.error("Ошибка входа:", error);
+
+            reserveButton.textContent = "БРОНЬ НЕДОСТУПНА";
+
+            showReserveMessage(
+                "Не удалось подключиться к системе бронирования."
+            );
+
+            return;
+        }
+
+        currentUser = data.user;
+    }
+
+    await refreshReservationStatus();
+}
 
 
 /* ==================================================
    ПРЕДЗАГРУЗКА ФОТО
 ================================================== */
 
-Object.values(colors).forEach(
-    color => {
+Object.values(colors).forEach(color => {
 
-        color.images.forEach(
-            src => {
+    color.images.forEach(src => {
 
-                const img =
-                    new Image();
+        const img = new Image();
+        img.src = src;
 
-                img.src = src;
+    });
 
-            }
-        );
-
-    }
-);
+});
 
 
 /* ==================================================
@@ -1216,62 +896,29 @@ function changeImage(index) {
         return;
     }
 
-
-    const images =
-        colors[
-            currentColor
-        ].images;
-
+    const images = colors[currentColor].images;
 
     if (!images.length) {
         return;
     }
 
-
     currentImage =
-        (
-            index +
-            images.length
-        )
-        %
-        images.length;
+        (index + images.length) % images.length;
 
-
-    productImage.classList.add(
-        "changing"
-    );
-
+    productImage.classList.add("changing");
 
     setTimeout(() => {
 
-        productImage.src =
-            images[
-                currentImage
-            ];
+        productImage.src = images[currentImage];
 
-
-        productImage.onload =
-            () => {
-
-                requestAnimationFrame(
-                    () => {
-
-                        productImage.classList.remove(
-                            "changing"
-                        );
-
-                    }
-                );
-
-            };
-
+        productImage.onload = () => {
+            requestAnimationFrame(() => {
+                productImage.classList.remove("changing");
+            });
+        };
 
         setTimeout(() => {
-
-            productImage.classList.remove(
-                "changing"
-            );
-
+            productImage.classList.remove("changing");
         }, 250);
 
     }, 180);
@@ -1283,213 +930,82 @@ function changeImage(index) {
    СМЕНА ЦВЕТА
 ================================================== */
 
-colorButtons.forEach(
-    button => {
+colorButtons.forEach(button => {
 
-        button.addEventListener(
-            "click",
-            () => {
+    button.addEventListener("click", () => {
 
-                const selectedColor =
-                    button.dataset.color;
+        const selectedColor = button.dataset.color;
 
+        if (
+            selectedColor === currentColor ||
+            colorChanging
+        ) {
+            return;
+        }
 
-                if (
-                    selectedColor ===
-                        currentColor
-                    ||
-                    colorChanging
-                ) {
+        colorChanging = true;
 
-                    return;
+        colorButtons.forEach(item => {
+            item.classList.remove("active");
+        });
 
-                }
+        button.classList.add("active");
 
+        productTitle.classList.add("title-changing");
+        productPrice.classList.add("price-changing");
+        productImage.classList.add("changing");
 
-                colorChanging =
-                    true;
+        setTimeout(() => {
 
+            currentColor = selectedColor;
+            currentImage = 0;
 
-                colorButtons.forEach(
-                    item => {
+            const data = colors[currentColor];
 
-                        item.classList.remove(
-                            "active"
-                        );
+            productTitle.textContent = data.title;
+            productPrice.textContent = data.price;
+            productImage.src = data.images[0];
 
-                    }
-                );
+            productImage.onload = () => {
+                requestAnimationFrame(() => {
+                    productImage.classList.remove("changing");
+                });
+            };
 
+            setTimeout(() => {
 
-                button.classList.add(
-                    "active"
-                );
+                productTitle.classList.remove("title-changing");
 
+                requestAnimationFrame(() => {
+                    productPrice.classList.remove("price-changing");
+                });
 
-                productTitle.classList.add(
-                    "title-changing"
-                );
+            }, 40);
 
+            refreshReservationStatus();
 
-                productPrice.classList.add(
-                    "price-changing"
-                );
+        }, 220);
 
+        setTimeout(() => {
+            colorChanging = false;
+        }, 500);
 
-                productImage.classList.add(
-                    "changing"
-                );
+    });
 
-
-                setTimeout(() => {
-
-                    currentColor =
-                        selectedColor;
-
-
-                    currentImage =
-                        0;
-
-
-                    const data =
-                        colors[
-                            currentColor
-                        ];
-
-
-                    productTitle.textContent =
-                        data.title;
-
-
-                    productPrice.textContent =
-                        data.price;
-
-
-                    productImage.src =
-                        data.images[0];
-
-
-                    productImage.onload =
-                        () => {
-
-                            requestAnimationFrame(
-                                () => {
-
-                                    productImage.classList.remove(
-                                        "changing"
-                                    );
-
-                                }
-                            );
-
-                        };
-
-
-                    setTimeout(() => {
-
-                        productTitle.classList.remove(
-                            "title-changing"
-                        );
-
-
-                        requestAnimationFrame(
-                            () => {
-
-                                productPrice.classList.remove(
-                                    "price-changing"
-                                );
-
-                            }
-                        );
-
-                    }, 40);
-
-
-                }, 220);
-
-
-                setTimeout(() => {
-
-                    colorChanging =
-                        false;
-
-                }, 500);
-
-            }
-        );
-
-    }
-);
+});
 
 
 /* ==================================================
    ПОСМОТРЕТЬ НА САЙТЕ
 ================================================== */
 
-websiteButton.addEventListener(
-    "click",
-    () => {
+websiteButton.addEventListener("click", () => {
 
-        const website =
-            colors[
-                currentColor
-            ].website;
+    const website = colors[currentColor].website;
 
+    window.open(website, "_blank");
 
-        window.open(
-            website,
-            "_blank"
-        );
-
-    }
-);
-
-
-/* ==================================================
-   ЗАБРОНИРОВАТЬ
-================================================== */
-
-reserveButton.addEventListener(
-    "click",
-    () => {
-
-
-        reserveButton.classList.remove(
-            "reserve-click"
-        );
-
-
-        void reserveButton.offsetWidth;
-
-
-        reserveButton.classList.add(
-            "reserve-click"
-        );
-
-
-        reserveMessage.classList.remove(
-            "show"
-        );
-
-
-        void reserveMessage.offsetWidth;
-
-
-        reserveMessage.classList.add(
-            "show"
-        );
-
-
-        setTimeout(() => {
-
-            reserveMessage.classList.remove(
-                "show"
-            );
-
-        }, 2500);
-
-    }
-);
+});
 
 
 /* ==================================================
@@ -1497,104 +1013,167 @@ reserveButton.addEventListener(
 ================================================== */
 
 const reserveAnimationStyle =
-    document.createElement(
-        "style"
-    );
-
+    document.createElement("style");
 
 reserveAnimationStyle.textContent = `
 
 .reserve-button.reserve-click {
-
-    animation:
-        reserveClickAnimation
-        .5s ease;
+    animation: reserveClickAnimation .5s ease;
 }
-
 
 @keyframes reserveClickAnimation {
 
     0% {
-
-        transform:
-            scale(1);
-
-        box-shadow:
-            0 0 0
-            rgba(255,0,0,0);
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255,0,0,0);
     }
-
 
     25% {
-
-        transform:
-            scale(.88);
-
-        background:
-            #ff0000;
-
-        border-color:
-            #ff0000;
-
-        color:
-            #fff;
-
-        box-shadow:
-            0 0 20px
-            rgba(255,0,0,.45);
+        transform: scale(.88);
+        background: #ff0000;
+        border-color: #ff0000;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(255,0,0,.45);
     }
-
 
     55% {
-
-        transform:
-            scale(1.06);
-
-        background:
-            #ff1717;
-
-        border-color:
-            #ff1717;
-
-        color:
-            #fff;
+        transform: scale(1.06);
+        background: #ff1717;
+        border-color: #ff1717;
+        color: #fff;
 
         box-shadow:
-            0 0 40px
-            rgba(255,0,0,.65),
-
-            0 0 70px
-            rgba(255,0,0,.25);
+            0 0 40px rgba(255,0,0,.65),
+            0 0 70px rgba(255,0,0,.25);
     }
 
-
     100% {
-
-        transform:
-            scale(1);
-
-        background:
-            #ff2020;
-
-        border-color:
-            #ff2020;
-
-        color:
-            #fff;
-
-        box-shadow:
-            0 0 25px
-            rgba(255,0,0,.35);
+        transform: scale(1);
+        background: #ff2020;
+        border-color: #ff2020;
+        color: #fff;
+        box-shadow: 0 0 25px rgba(255,0,0,.35);
     }
 
 }
 
 `;
 
+document.head.appendChild(reserveAnimationStyle);
 
-document.head.appendChild(
-    reserveAnimationStyle
-);
+
+/* ==================================================
+   ЗАБРОНИРОВАТЬ / ОТМЕНИТЬ БРОНЬ
+================================================== */
+
+reserveButton.addEventListener("click", async () => {
+
+    if (!currentUser || reservationBusy) {
+        return;
+    }
+
+    if (reserveButton.textContent === "УЖЕ ЗАБРОНИРОВАНО") {
+        showReserveMessage(
+            "Этот цвет уже забронирован другим посетителем."
+        );
+        return;
+    }
+
+    reservationBusy = true;
+    reserveButton.disabled = true;
+
+    reserveButton.classList.remove("reserve-click");
+    void reserveButton.offsetWidth;
+    reserveButton.classList.add("reserve-click");
+
+    const reservationId = getCurrentReservationId();
+
+    try {
+
+        const {
+            data: existingReservation,
+            error: checkError
+        } = await supabaseClient
+            .from("reservations")
+            .select("user_id")
+            .eq("product_id", reservationId)
+            .maybeSingle();
+
+        if (checkError) {
+            throw checkError;
+        }
+
+        if (existingReservation) {
+
+            if (existingReservation.user_id === currentUser.id) {
+
+                const { error: deleteError } =
+                    await supabaseClient
+                        .from("reservations")
+                        .delete()
+                        .eq("product_id", reservationId)
+                        .eq("user_id", currentUser.id);
+
+                if (deleteError) {
+                    throw deleteError;
+                }
+
+                showReserveMessage("Бронь отменена.");
+
+            } else {
+
+                showReserveMessage(
+                    "Этот цвет уже забронирован другим посетителем."
+                );
+
+            }
+
+        } else {
+
+            const { error: insertError } =
+                await supabaseClient
+                    .from("reservations")
+                    .insert({
+                        product_id: reservationId,
+                        user_id: currentUser.id
+                    });
+
+            if (insertError) {
+
+                if (insertError.code === "23505") {
+                    showReserveMessage(
+                        "Этот цвет только что забронировали."
+                    );
+                } else {
+                    throw insertError;
+                }
+
+            } else {
+
+                showReserveMessage("Товар успешно забронирован!");
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error("Ошибка бронирования:", error);
+
+        showReserveMessage(
+            "Не удалось выполнить действие. Попробуйте ещё раз."
+        );
+
+    } finally {
+
+        await refreshReservationStatus();
+
+        reservationBusy = false;
+        reserveButton.disabled = false;
+
+    }
+
+});
 
 
 /* ==================================================
@@ -1602,40 +1181,21 @@ document.head.appendChild(
 ================================================== */
 
 const backButton =
-    document.querySelector(
-        ".back-button"
-    );
+    document.querySelector(".back-button");
 
+backButton.addEventListener("click", function(event) {
 
-backButton.addEventListener(
-    "click",
-    function(event) {
+    event.preventDefault();
 
-        event.preventDefault();
+    this.classList.remove("back-click");
+    void this.offsetWidth;
+    this.classList.add("back-click");
 
+    setTimeout(() => {
+        window.location.href = "products.html";
+    }, 220);
 
-        this.classList.remove(
-            "back-click"
-        );
-
-
-        void this.offsetWidth;
-
-
-        this.classList.add(
-            "back-click"
-        );
-
-
-        setTimeout(() => {
-
-            window.location.href =
-                "products.html";
-
-        }, 220);
-
-    }
-);
+});
 
 
 /* ==================================================
@@ -1643,66 +1203,54 @@ backButton.addEventListener(
 ================================================== */
 
 const backAnimationStyle =
-    document.createElement(
-        "style"
-    );
-
+    document.createElement("style");
 
 backAnimationStyle.textContent = `
 
 .back-button.back-click {
-
-    animation:
-        backClickAnimation
-        .32s ease;
+    animation: backClickAnimation .32s ease;
 }
-
 
 @keyframes backClickAnimation {
 
     0% {
-
-        transform:
-            translateX(0)
-            scale(1);
+        transform: translateX(0) scale(1);
     }
-
 
     35% {
-
-        transform:
-            translateX(-7px)
-            scale(.92);
+        transform: translateX(-7px) scale(.92);
     }
-
 
     70% {
-
-        transform:
-            translateX(3px)
-            scale(1.03);
+        transform: translateX(3px) scale(1.03);
     }
 
-
     100% {
-
-        transform:
-            translateX(0)
-            scale(1);
+        transform: translateX(0) scale(1);
     }
 
 }
 
 `;
 
+document.head.appendChild(backAnimationStyle);
 
-document.head.appendChild(
-    backAnimationStyle
-);
 
+/* ==================================================
+   ЗАПУСК И ОБНОВЛЕНИЕ БРОНИ
+================================================== */
+
+initializeReservation();
+
+setInterval(() => {
+
+    if (currentUser && !reservationBusy) {
+        refreshReservationStatus();
+    }
+
+}, 5000);
 
 </script>
 
 </body>
-
 </html>

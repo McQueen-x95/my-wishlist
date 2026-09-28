@@ -2,18 +2,10 @@
 <html lang="ru">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-    My Wishlist — Supreme x Nike Air Force 1 Low White
-</title>
-
+<title>My Wishlist — Supreme x Nike Air Force 1 Low White</title>
 
 <style>
 
@@ -74,8 +66,7 @@ body {
         transform .2s ease,
         box-shadow .3s ease;
 
-    animation:
-        backAppear .7s ease forwards;
+    animation: backAppear .7s ease forwards;
 }
 
 .back-button:hover {
@@ -89,10 +80,7 @@ body {
 }
 
 .back-button:active {
-    transform:
-        translateX(-5px)
-        scale(.94);
-
+    transform: translateX(-5px) scale(.94);
     color: #ff0000;
     border-color: #ff0000;
 
@@ -102,7 +90,6 @@ body {
 }
 
 @keyframes backAppear {
-
     from {
         opacity: 0;
         transform: translateX(-30px);
@@ -121,11 +108,7 @@ body {
 
 .product-page {
     min-height: 100vh;
-
-    padding:
-        90px
-        50px
-        60px;
+    padding: 90px 50px 60px;
 }
 
 .product-container {
@@ -134,13 +117,8 @@ body {
     margin: 0 auto;
 
     display: grid;
-
-    grid-template-columns:
-        1.15fr
-        .85fr;
-
+    grid-template-columns: 1.15fr .85fr;
     gap: 65px;
-
     align-items: center;
 }
 
@@ -158,14 +136,10 @@ body {
 
     position: relative;
 
-    animation:
-        galleryAppear
-        .8s ease
-        forwards;
+    animation: galleryAppear .8s ease forwards;
 }
 
 @keyframes galleryAppear {
-
     from {
         opacity: 0;
         transform: translateX(-35px);
@@ -222,36 +196,19 @@ body {
 .brand {
     font-size: 13px;
     letter-spacing: 5px;
-
     color: #888;
-
     margin-bottom: 15px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .18s
-        both;
+    animation: infoItemAppear .65s ease .18s both;
 }
 
 .product-title {
-    font-size:
-        clamp(
-            34px,
-            4vw,
-            58px
-        );
-
+    font-size: clamp(34px, 4vw, 58px);
     line-height: 1.05;
     font-weight: 700;
-
     margin-bottom: 25px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .28s
-        both;
+    animation: infoItemAppear .65s ease .28s both;
 
     transition:
         opacity .22s ease,
@@ -265,19 +222,12 @@ body {
 
 .product-description {
     max-width: 500px;
-
     color: #999;
-
     font-size: 15px;
     line-height: 1.7;
-
     margin-bottom: 28px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .39s
-        both;
+    animation: infoItemAppear .65s ease .39s both;
 }
 
 
@@ -287,27 +237,15 @@ body {
 
 .size-note {
     max-width: 500px;
-
     color: #ff3030;
-
     font-size: 13px;
     line-height: 1.6;
-
     letter-spacing: .5px;
-
     margin-bottom: 28px;
-
     padding-left: 14px;
+    border-left: 2px solid rgba(255,0,0,.7);
 
-    border-left:
-        2px solid
-        rgba(255,0,0,.7);
-
-    animation:
-        infoItemAppear
-        .65s ease
-        .45s
-        both;
+    animation: infoItemAppear .65s ease .45s both;
 }
 
 
@@ -318,41 +256,25 @@ body {
 .color-title {
     font-size: 13px;
     letter-spacing: 3px;
-
     color: #888;
-
     margin-bottom: 15px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .50s
-        both;
+    animation: infoItemAppear .65s ease .50s both;
 }
 
 .color-options {
     display: flex;
     gap: 14px;
-
     margin-bottom: 35px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .58s
-        both;
+    animation: infoItemAppear .65s ease .58s both;
 }
 
 .color-button {
     width: 32px;
     height: 32px;
-
     border-radius: 50%;
-
-    border:
-        2px solid
-        transparent;
-
+    border: 2px solid transparent;
     cursor: pointer;
     position: relative;
 
@@ -364,15 +286,10 @@ body {
 
 .color-button::after {
     content: "";
-
     position: absolute;
     inset: -6px;
-
     border-radius: 50%;
-
-    border:
-        1px solid
-        transparent;
+    border: 1px solid transparent;
 
     transition:
         border-color .25s ease,
@@ -380,37 +297,22 @@ body {
 }
 
 .color-button:hover {
-    transform:
-        scale(1.16);
+    transform: scale(1.16);
 }
 
 .color-button.active {
-    transform:
-        scale(1.15);
-
-    border-color:
-        #fff;
+    transform: scale(1.15);
+    border-color: #fff;
 }
 
 .color-button.active::after {
-    border-color:
-        rgba(255,255,255,.35);
-
-    box-shadow:
-        0 0 12px
-        rgba(255,255,255,.18);
+    border-color: rgba(255,255,255,.35);
+    box-shadow: 0 0 12px rgba(255,255,255,.18);
 }
 
 .color-white {
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #cfcfcf
-        );
-
-    border-color:
-        #ddd;
+    background: linear-gradient(135deg, #ffffff, #cfcfcf);
+    border-color: #ddd;
 }
 
 
@@ -421,14 +323,9 @@ body {
 .product-price {
     font-size: 32px;
     font-weight: 700;
-
     margin-bottom: 30px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .68s
-        both;
+    animation: infoItemAppear .65s ease .68s both;
 
     transition:
         opacity .22s ease,
@@ -437,12 +334,8 @@ body {
 
 .product-price.price-changing {
     opacity: .72;
-
-    transform:
-        translateY(0);
-
-    transition:
-        opacity .16s ease;
+    transform: translateY(0);
+    transition: opacity .16s ease;
 }
 
 
@@ -454,24 +347,15 @@ body {
     display: flex;
     gap: 14px;
 
-    animation:
-        infoItemAppear
-        .65s ease
-        .80s
-        both;
+    animation: infoItemAppear .65s ease .80s both;
 }
 
 .reserve-button,
 .website-button {
-    padding:
-        15px
-        25px;
-
+    padding: 15px 25px;
     border-radius: 30px;
-
     font-size: 13px;
     letter-spacing: 1.5px;
-
     cursor: pointer;
 
     transition:
@@ -483,98 +367,55 @@ body {
 }
 
 .reserve-button {
-    border:
-        1px solid #fff;
-
-    background:
-        #fff;
-
-    color:
-        #000;
+    border: 1px solid #fff;
+    background: #fff;
+    color: #000;
 }
 
-.reserve-button:hover {
-    background:
-        #ff2020;
+.reserve-button:hover:not(:disabled) {
+    background: #ff2020;
+    border-color: #ff2020;
+    color: #fff;
 
-    border-color:
-        #ff2020;
-
-    color:
-        #fff;
-
-    box-shadow:
-        0 0 25px
-        rgba(255,0,0,.35);
-
-    transform:
-        translateY(-2px);
+    box-shadow: 0 0 25px rgba(255,0,0,.35);
+    transform: translateY(-2px);
 }
 
-.reserve-button:active {
-    transform:
-        scale(.91);
-
-    background:
-        #d60000;
-
-    border-color:
-        #d60000;
-
-    color:
-        #fff;
+.reserve-button:active:not(:disabled) {
+    transform: scale(.91);
+    background: #d60000;
+    border-color: #d60000;
+    color: #fff;
 
     box-shadow:
-        0 0 35px
-        rgba(255,0,0,.65),
+        0 0 35px rgba(255,0,0,.65),
+        0 0 60px rgba(255,0,0,.25),
+        inset 0 0 15px rgba(255,255,255,.15);
+}
 
-        0 0 60px
-        rgba(255,0,0,.25),
-
-        inset 0 0 15px
-        rgba(255,255,255,.15);
+.reserve-button:disabled {
+    cursor: default;
+    opacity: .75;
 }
 
 .website-button {
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
-    background:
-        transparent;
-
-    color:
-        #fff;
+    border: 1px solid rgba(255,255,255,.25);
+    background: transparent;
+    color: #fff;
 }
 
 .website-button:hover {
-    border-color:
-        rgba(255,0,0,.7);
-
-    color:
-        #ff2020;
-
-    box-shadow:
-        0 0 18px
-        rgba(255,0,0,.15);
-
-    transform:
-        translateY(-2px);
+    border-color: rgba(255,0,0,.7);
+    color: #ff2020;
+    box-shadow: 0 0 18px rgba(255,0,0,.15);
+    transform: translateY(-2px);
 }
 
 .website-button:active {
-    transform:
-        scale(.94);
-
-    color:
-        #ff0000;
-
-    border-color:
-        #ff0000;
-
-    box-shadow:
-        0 0 28px
-        rgba(255,0,0,.45);
+    transform: scale(.94);
+    color: #ff0000;
+    border-color: #ff0000;
+    box-shadow: 0 0 28px rgba(255,0,0,.45);
 }
 
 
@@ -584,30 +425,19 @@ body {
 
 .reserve-message {
     margin-top: 18px;
-
-    color:
-        #ff3030;
-
+    color: #ff3030;
     font-size: 13px;
     letter-spacing: 1px;
-
     opacity: 0;
-
-    transform:
-        translateY(8px);
-
+    transform: translateY(8px);
     pointer-events: none;
 }
 
 .reserve-message.show {
-    animation:
-        reserveMessage
-        .55s ease
-        forwards;
+    animation: reserveMessage .55s ease forwards;
 }
 
 @keyframes reserveMessage {
-
     0% {
         opacity: 0;
         transform: translateY(8px);
@@ -630,7 +460,6 @@ body {
 ================================================== */
 
 @keyframes infoItemAppear {
-
     from {
         opacity: 0;
         transform: translateY(22px);
@@ -648,11 +477,8 @@ body {
 ================================================== */
 
 @media (max-width: 900px) {
-
     .product-container {
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
         gap: 30px;
     }
 
@@ -690,22 +516,14 @@ body {
 }
 
 @media (max-width: 600px) {
-
     .product-page {
-        padding:
-            100px
-            20px
-            45px;
+        padding: 100px 20px 45px;
     }
 
     .back-button {
         top: 20px;
         left: 20px;
-
-        padding:
-            10px
-            17px;
-
+        padding: 10px 17px;
         font-size: 11px;
     }
 
@@ -736,23 +554,19 @@ body {
 
     .product-buttons {
         width: 100%;
-
         flex-direction: column;
         align-items: center;
     }
 
     .reserve-button,
     .website-button {
-        width:
-            min(
-                100%,
-                300px
-            );
+        width: min(100%, 300px);
     }
 }
 
 
 /* ===== GALLERY ARROWS ===== */
+
 .image-arrow {
     position: absolute;
     top: 50%;
@@ -808,6 +622,7 @@ body {
 /* =========================
    СТРЕЛКИ — КАК НА СТРАНИЦЕ КЛАВИАТУРЫ
 ========================= */
+
 .gallery-arrow {
     position: absolute;
     top: 50%;
@@ -824,12 +639,14 @@ body {
     font-size: 25px;
     cursor: pointer;
     z-index: 10;
+
     transition:
         color .25s ease,
         background .25s ease,
         border-color .25s ease,
         box-shadow .25s ease,
         transform .2s ease;
+
     animation: arrowsAppear .7s ease .35s both;
 }
 
@@ -845,8 +662,7 @@ body {
     color: #ff2020;
     border-color: rgba(255,0,0,.7);
     background: rgba(255,0,0,.06);
-    box-shadow:
-        0 0 18px rgba(255,0,0,.25);
+    box-shadow: 0 0 18px rgba(255,0,0,.25);
 }
 
 .gallery-arrow.left:hover {
@@ -880,6 +696,7 @@ body {
         opacity: 0;
         transform: translateY(-50%) scale(.7);
     }
+
     to {
         opacity: 1;
         transform: translateY(-50%) scale(1);
@@ -887,51 +704,42 @@ body {
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <!-- ==================================================
      НАЗАД
 ================================================== -->
 
-<a
-    href="products.html"
-    class="back-button"
->
+<a href="products.html" class="back-button">
     ← НАЗАД
 </a>
 
-
 <main class="product-page">
 
-
     <div class="product-container">
-
 
         <!-- ==================================================
              ГАЛЕРЕЯ
         ================================================== -->
 
         <div class="gallery">
-            <button class="gallery-arrow left" id="prevImage">‹</button>
-            <div class="image-container">
 
+            <button class="gallery-arrow left" id="prevImage" type="button">‹</button>
+
+            <div class="image-container">
                 <img
                     id="productImage"
                     class="product-image"
                     src="images/airforce1-white.webp"
                     alt="Supreme x Nike Air Force 1 Low White"
                 >
-
             </div>
 
-        
-            <button class="gallery-arrow right" id="nextImage">›</button></div>
+            <button class="gallery-arrow right" id="nextImage" type="button">›</button>
 
+        </div>
 
         <!-- ==================================================
              ИНФОРМАЦИЯ
@@ -939,78 +747,56 @@ body {
 
         <div class="product-info">
 
-
             <div class="brand">
                 SUPREME × NIKE
             </div>
 
-
-            <h1
-                class="product-title"
-                id="productTitle"
-            >
+            <h1 class="product-title" id="productTitle">
                 Supreme x Nike
                 Air Force 1 Low White
             </h1>
 
-
             <p class="product-description">
-
                 Supreme x Nike Air Force 1 Low
                 в классическом белом цвете.
                 Легендарный силуэт Air Force 1
                 с фирменным стилем Supreme.
-
             </p>
-
 
             <div class="size-note">
                 Если будете бронировать, напишите
                 в Telegram, чтобы узнать размер.
             </div>
 
-
             <div class="color-title">
                 ЦВЕТ
             </div>
 
-
             <div class="color-options">
 
                 <button
-                    class="
-                        color-button
-                        color-white
-                        active
-                    "
+                    class="color-button color-white active"
                     data-color="white"
                     aria-label="White"
                     type="button"
-                >
-                </button>
+                ></button>
 
             </div>
 
-
-            <div
-                class="product-price"
-                id="productPrice"
-            >
+            <div class="product-price" id="productPrice">
                 2 880 ₴
             </div>
 
-
             <div class="product-buttons">
-
 
                 <button
                     class="reserve-button"
                     id="reserveButton"
                     type="button"
+                    disabled
                 >
-                    ЗАБРОНИРОВАТЬ
+                    ЗАГРУЗКА...
                 </button>
-
 
                 <button
                     class="website-button"
@@ -1020,32 +806,27 @@ body {
                     ПОСМОТРЕТЬ НА САЙТЕ
                 </button>
 
-
             </div>
 
-
-            <div
-                class="reserve-message"
-                id="reserveMessage"
-            >
+            <div class="reserve-message" id="reserveMessage">
                 Товар добавлен в список бронирования.
                 Напишите в Telegram, чтобы узнать размер.
             </div>
 
-
         </div>
-
 
     </div>
 
-
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 /* ==================================================
    ПЕРЕХОД НА ПЕРВУЮ СТРАНИЦУ ПРИ ОБНОВЛЕНИИ
 ================================================== */
+
 const navigationEntry =
     performance.getEntriesByType("navigation")[0];
 
@@ -1056,14 +837,40 @@ if (
     window.location.replace("index.html");
 }
 
+
+/* ==================================================
+   SUPABASE — ОБЩАЯ СИСТЕМА БРОНИРОВАНИЯ
+================================================== */
+
+const SUPABASE_URL =
+    "https://ucsbjfouyteyxaojrudb.supabase.co";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_LuQk6LrHSJB5HXbzSJvQyw_Loj5L9QM";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+const RESERVATION_ID =
+    "supreme-nike-air-force-1-low-white";
+
+let currentUser = null;
+let reservationBusy = false;
+
+
 /* ==================================================
    ДАННЫЕ ТОВАРА
 ================================================== */
+
 const productData = {
     title: "Supreme x Nike Air Force 1 Low White",
     price: "2 880 ₴",
+
     website:
         "https://www.snake-shoes.com/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3/supreme-x-nike-air-force-1-low-white?c=6369512269a41",
+
     images: [
         "images/airforce1-white.webp",
         "images/airforce1-white-2.webp",
@@ -1072,9 +879,11 @@ const productData = {
     ]
 };
 
+
 /* ==================================================
    ЭЛЕМЕНТЫ
 ================================================== */
+
 const productImage =
     document.getElementById("productImage");
 
@@ -1099,24 +908,137 @@ const prevImage =
 const nextImage =
     document.getElementById("nextImage");
 
+
 /* ==================================================
    ПЕРЕМЕННЫЕ
 ================================================== */
+
 let currentImage = 0;
 let imageChanging = false;
+
+
+/* ==================================================
+   СООБЩЕНИЕ БРОНИРОВАНИЯ
+================================================== */
+
+function showReserveMessage(message) {
+    reserveMessage.textContent = message;
+
+    reserveMessage.classList.remove("show");
+    void reserveMessage.offsetWidth;
+    reserveMessage.classList.add("show");
+
+    setTimeout(() => {
+        reserveMessage.classList.remove("show");
+    }, 3000);
+}
+
+
+/* ==================================================
+   ОБНОВЛЕНИЕ СОСТОЯНИЯ БРОНИ
+================================================== */
+
+async function refreshReservationStatus() {
+
+    if (!currentUser) {
+        reserveButton.textContent = "ЗАГРУЗКА...";
+        reserveButton.disabled = true;
+        return;
+    }
+
+    const { data, error } = await supabaseClient
+        .from("reservations")
+        .select("user_id")
+        .eq("product_id", RESERVATION_ID)
+        .maybeSingle();
+
+    if (error) {
+        console.error("Ошибка проверки брони:", error);
+
+        reserveButton.textContent = "ОШИБКА БРОНИ";
+        reserveButton.disabled = true;
+
+        showReserveMessage(
+            "Не удалось проверить бронь. Обновите страницу."
+        );
+
+        return;
+    }
+
+    reserveButton.disabled = false;
+
+    if (!data) {
+        reserveButton.textContent = "ЗАБРОНИРОВАТЬ";
+        return;
+    }
+
+    if (data.user_id === currentUser.id) {
+        reserveButton.textContent = "ОТМЕНИТЬ БРОНЬ";
+    } else {
+        reserveButton.textContent = "УЖЕ ЗАБРОНИРОВАНО";
+    }
+}
+
+
+/* ==================================================
+   ВХОД АНОНИМНОГО ПОЛЬЗОВАТЕЛЯ
+================================================== */
+
+async function initializeReservation() {
+
+    reserveButton.textContent = "ЗАГРУЗКА...";
+    reserveButton.disabled = true;
+
+    const {
+        data: { session },
+        error: sessionError
+    } = await supabaseClient.auth.getSession();
+
+    if (sessionError) {
+        console.error("Ошибка получения сессии:", sessionError);
+    }
+
+    if (session?.user) {
+        currentUser = session.user;
+    } else {
+        const { data, error } =
+            await supabaseClient.auth.signInAnonymously();
+
+        if (error) {
+            console.error("Ошибка входа:", error);
+
+            reserveButton.textContent = "БРОНЬ НЕДОСТУПНА";
+
+            showReserveMessage(
+                "Не удалось подключиться к системе бронирования."
+            );
+
+            return;
+        }
+
+        currentUser = data.user;
+    }
+
+    await refreshReservationStatus();
+}
+
 
 /* ==================================================
    ПРЕДЗАГРУЗКА ФОТО
 ================================================== */
+
 productData.images.forEach(src => {
     const img = new Image();
     img.src = src;
 });
 
+
 /* ==================================================
    СМЕНА ФОТО
 ================================================== */
+
 function changeImage(index) {
+
     if (imageChanging) return;
 
     const images = productData.images;
@@ -1131,8 +1053,8 @@ function changeImage(index) {
     productImage.classList.add("changing");
 
     setTimeout(() => {
-        productImage.src =
-            images[currentImage];
+
+        productImage.src = images[currentImage];
 
         productImage.onload = () => {
             requestAnimationFrame(() => {
@@ -1147,36 +1069,43 @@ function changeImage(index) {
         setTimeout(() => {
             imageChanging = false;
         }, 280);
+
     }, 180);
 }
+
 
 /* ==================================================
    СТРЕЛКА НАЗАД
 ================================================== */
+
 prevImage.addEventListener("click", () => {
+
     prevImage.classList.remove("arrow-click");
     void prevImage.offsetWidth;
     prevImage.classList.add("arrow-click");
 
-    currentImage--;
-    changeImage(currentImage);
+    changeImage(currentImage - 1);
 });
+
 
 /* ==================================================
    СТРЕЛКА ВПЕРЁД
 ================================================== */
+
 nextImage.addEventListener("click", () => {
+
     nextImage.classList.remove("arrow-click");
     void nextImage.offsetWidth;
     nextImage.classList.add("arrow-click");
 
-    currentImage++;
-    changeImage(currentImage);
+    changeImage(currentImage + 1);
 });
+
 
 /* ==================================================
    АНИМАЦИЯ СТРЕЛОК ПРИ НАЖАТИИ
 ================================================== */
+
 const arrowClickStyle =
     document.createElement("style");
 
@@ -1189,12 +1118,15 @@ arrowClickStyle.textContent = `
     0% {
         transform: translateY(-50%) scale(1);
     }
+
     35% {
         transform: translateY(-50%) scale(.78);
     }
+
     70% {
         transform: translateY(-50%) scale(1.08);
     }
+
     100% {
         transform: translateY(-50%) scale(1);
     }
@@ -1203,50 +1135,20 @@ arrowClickStyle.textContent = `
 
 document.head.appendChild(arrowClickStyle);
 
+
 /* ==================================================
    ПОСМОТРЕТЬ НА САЙТЕ
 ================================================== */
+
 websiteButton.addEventListener("click", () => {
-    window.open(
-        productData.website,
-        "_blank"
-    );
+    window.open(productData.website, "_blank");
 });
 
-/* ==================================================
-   ЗАБРОНИРОВАТЬ
-================================================== */
-reserveButton.addEventListener("click", () => {
-    reserveButton.classList.remove(
-        "reserve-click"
-    );
-
-    void reserveButton.offsetWidth;
-
-    reserveButton.classList.add(
-        "reserve-click"
-    );
-
-    reserveMessage.classList.remove(
-        "show"
-    );
-
-    void reserveMessage.offsetWidth;
-
-    reserveMessage.classList.add(
-        "show"
-    );
-
-    setTimeout(() => {
-        reserveMessage.classList.remove(
-            "show"
-        );
-    }, 2500);
-});
 
 /* ==================================================
    АНИМАЦИЯ КНОПКИ БРОНИРОВАНИЯ
 ================================================== */
+
 const reserveAnimationStyle =
     document.createElement("style");
 
@@ -1260,58 +1162,169 @@ reserveAnimationStyle.textContent = `
         transform: scale(1);
         box-shadow: 0 0 0 rgba(255,0,0,0);
     }
+
     25% {
         transform: scale(.88);
         background: #ff0000;
         border-color: #ff0000;
         color: #fff;
-        box-shadow:
-            0 0 20px rgba(255,0,0,.45);
+        box-shadow: 0 0 20px rgba(255,0,0,.45);
     }
+
     55% {
         transform: scale(1.06);
         background: #ff1717;
         border-color: #ff1717;
         color: #fff;
+
         box-shadow:
             0 0 40px rgba(255,0,0,.65),
             0 0 70px rgba(255,0,0,.25);
     }
+
     100% {
         transform: scale(1);
         background: #ff2020;
         border-color: #ff2020;
         color: #fff;
-        box-shadow:
-            0 0 25px rgba(255,0,0,.35);
+        box-shadow: 0 0 25px rgba(255,0,0,.35);
     }
 }
 `;
 
-document.head.appendChild(
-    reserveAnimationStyle
-);
+document.head.appendChild(reserveAnimationStyle);
+
+
+/* ==================================================
+   ЗАБРОНИРОВАТЬ / ОТМЕНИТЬ БРОНЬ
+================================================== */
+
+reserveButton.addEventListener("click", async () => {
+
+    if (!currentUser || reservationBusy) return;
+
+    if (reserveButton.textContent === "УЖЕ ЗАБРОНИРОВАНО") {
+        showReserveMessage(
+            "Этот товар уже забронирован другим посетителем."
+        );
+        return;
+    }
+
+    reservationBusy = true;
+    reserveButton.disabled = true;
+
+    reserveButton.classList.remove("reserve-click");
+    void reserveButton.offsetWidth;
+    reserveButton.classList.add("reserve-click");
+
+    try {
+
+        const {
+            data: existingReservation,
+            error: checkError
+        } = await supabaseClient
+            .from("reservations")
+            .select("user_id")
+            .eq("product_id", RESERVATION_ID)
+            .maybeSingle();
+
+        if (checkError) {
+            throw checkError;
+        }
+
+        if (existingReservation) {
+
+            if (existingReservation.user_id === currentUser.id) {
+
+                const { error: deleteError } =
+                    await supabaseClient
+                        .from("reservations")
+                        .delete()
+                        .eq("product_id", RESERVATION_ID)
+                        .eq("user_id", currentUser.id);
+
+                if (deleteError) {
+                    throw deleteError;
+                }
+
+                showReserveMessage("Бронь отменена.");
+
+            } else {
+
+                showReserveMessage(
+                    "Этот товар уже забронирован другим посетителем."
+                );
+
+            }
+
+        } else {
+
+            const { error: insertError } =
+                await supabaseClient
+                    .from("reservations")
+                    .insert({
+                        product_id: RESERVATION_ID,
+                        user_id: currentUser.id
+                    });
+
+            if (insertError) {
+
+                if (insertError.code === "23505") {
+                    showReserveMessage(
+                        "Этот товар только что забронировали."
+                    );
+                } else {
+                    throw insertError;
+                }
+
+            } else {
+
+                showReserveMessage(
+                    "Товар забронирован! Напишите в Telegram, чтобы узнать размер."
+                );
+
+            }
+        }
+
+    } catch (error) {
+
+        console.error("Ошибка бронирования:", error);
+
+        showReserveMessage(
+            "Не удалось выполнить действие. Попробуйте ещё раз."
+        );
+
+    } finally {
+
+        await refreshReservationStatus();
+
+        reservationBusy = false;
+        reserveButton.disabled = false;
+
+    }
+});
+
 
 /* ==================================================
    АНИМАЦИЯ НАЗАД ПРИ НАЖАТИИ
 ================================================== */
+
 const backButton =
     document.querySelector(".back-button");
 
 backButton.addEventListener("click", function(event) {
+
     event.preventDefault();
 
     this.classList.remove("back-click");
-
     void this.offsetWidth;
-
     this.classList.add("back-click");
 
     setTimeout(() => {
-        window.location.href =
-            "products.html";
+        window.location.href = "products.html";
     }, 220);
 });
+
 
 const backAnimationStyle =
     document.createElement("style");
@@ -1325,22 +1338,37 @@ backAnimationStyle.textContent = `
     0% {
         transform: translateX(0) scale(1);
     }
+
     35% {
         transform: translateX(-7px) scale(.92);
     }
+
     70% {
         transform: translateX(3px) scale(1.03);
     }
+
     100% {
         transform: translateX(0) scale(1);
     }
 }
 `;
 
-document.head.appendChild(
-    backAnimationStyle
-);
-</script>
-</body>
+document.head.appendChild(backAnimationStyle);
 
+
+/* ==================================================
+   ЗАПУСК И ОБНОВЛЕНИЕ БРОНИ
+================================================== */
+
+initializeReservation();
+
+setInterval(() => {
+    if (currentUser && !reservationBusy) {
+        refreshReservationStatus();
+    }
+}, 5000);
+
+</script>
+
+</body>
 </html>
